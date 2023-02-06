@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 import 'package:one_work/view/pages/auth/sign_in.dart';
+import 'package:one_work/view/pages/home/home_page.dart';
 import 'package:one_work/view/pages/style/style.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -57,12 +58,12 @@ class _OnBoardingState extends State<OnBoarding> {
         showBullets: true,
         skipCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => SignInPage()),
+              MaterialPageRoute(builder: (_) => const HomePage()),
               (route) => false);
         },
         finishCallback: () {
-         Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => SignInPage()),
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (_) => const HomePage()),
               (route) => false);
         },
       ),
