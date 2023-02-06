@@ -12,33 +12,41 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   final pages = [
     PageModel(
+      titleColor: Style.whiteColor,
+      bodyColor: Style.whiteColor,
         color: const Color(0xFF5386E4),
         imageAssetPath: 'assets/images/1.png',
-        title: Text('Search your job',style: Style.textStyleRegular(size: 28),),
+        title: 'Search your job',
         body:
-            Text('Figure out your top five priorities whether it is company culture, salary.',style: Style.textStyleRegular2(size: 15),),
+            'Figure out your top five priorities whether it is company culture, salary.',
         doAnimateImage: true),
     PageModel(
+      titleColor: Style.whiteColor,
+      bodyColor: Style.whiteColor,
         color: const Color(0xffFBBC05),
         imageAssetPath: 'assets/images/2.png',
-        title:Text('Browse jobs list',style: Style.textStyleRegular(size: 28),),
+        title: 'Browse jobs list',
         body:
-             Text('Our job list include several  industries, so you can find the best job for you.',style: Style.textStyleRegular2(size: 15),),
+            'Our job list include several  industries, so you can find the best job for you.',
         doAnimateImage: true),
     PageModel(
+      titleColor: Style.whiteColor,
+      bodyColor: Style.whiteColor,
         color: const Color(0xff0E9D57),
         imageAssetPath: 'assets/images/3.png',
-        title:Text('Apply to best jobs',style: Style.textStyleRegular(size: 28),),
+        title: 'Apply to best jobs',
         body:
-            Text('You can apply to your desirable jobs very quickly and easily with ease.',style: Style.textStyleRegular2(size: 15),),
+            'You can apply to your desirable jobs very quickly and easily with ease.',
         doAnimateImage: true),
-      PageModel(
+    PageModel(
+      titleColor: Style.whiteColor,
+      bodyColor: Style.whiteColor,
         color: const Color(0xff5F4BB6),
         imageAssetPath: 'assets/images/4.png',
-        title:Text('Make your career',style: Style.textStyleRegular(size: 28),),
+        title: 'Make your career',
         body:
-            Text('We help you find your dream job based on your skillset, location, demand.',style: Style.textStyleRegular2(size: 15),),
-        doAnimateImage: true),  
+            'We help you find your dream job based on your skillset, location, demand.',
+        doAnimateImage: true),
   ];
   @override
   Widget build(BuildContext context) {
