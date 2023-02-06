@@ -53,6 +53,8 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: OverBoard(
+        finishText: 'Register',
+        activeBulletColor: Style.primaryDisabledColor,
         pages: pages,
         showBullets: true,
         skipCallback: () {
@@ -61,7 +63,7 @@ class _OnBoardingState extends State<OnBoarding> {
               (route) => false);
         },
         finishCallback: () {
-         Navigator.of(context).pushAndRemoveUntil(
+          Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (_) => SignInPage()),
               (route) => false);
         },
