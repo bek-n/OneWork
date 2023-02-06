@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
-import 'package:one_work/view/components/pages/auth/sign_in.dart';
-import 'package:one_work/view/components/pages/style/style.dart';
+import 'package:one_work/view/pages/auth/sign_in.dart';
+import 'package:one_work/view/pages/style/style.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});

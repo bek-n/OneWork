@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:one_work/view/components/pages/style/style.dart';
+import 'package:one_work/view/pages/style/style.dart';
 
 import 'onboarding_page.dart';
 
