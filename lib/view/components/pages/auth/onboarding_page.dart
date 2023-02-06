@@ -57,7 +57,7 @@ class _OnBoardingState extends State<OnBoarding> {
         // WRITE SKIP BUTTON ACTION HERE
       },
       finishCallback: () {
-        // WRITE THE FINISH BUTTON ACTION HERE
+        // WRITE THE FINISH BUTTON ACTION 
       },
     );
   }
