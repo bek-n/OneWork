@@ -165,6 +165,8 @@ class _Image extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned.fill(
+            right: -5,
+            bottom: -5,
             child: RotatedBox(
               quarterTurns: 2,
               child: Icon(
@@ -173,8 +175,6 @@ class _Image extends StatelessWidget {
                 color: icon1Color,
               ),
             ),
-            right: -5,
-            bottom: -5,
           ),
           Positioned.fill(
             child: RotatedBox(
