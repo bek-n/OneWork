@@ -5,7 +5,6 @@ import 'package:icons_plus/icons_plus.dart';
 import '../../components/custom_textfromfiled.dart';
 import 'login_page.dart';
 
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
@@ -20,24 +19,19 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.arrow_back_ios),
-              ),
-
               const Padding(
                 padding: EdgeInsets.only(left: 23),
                 child: Text(
-                  'Jobseek',
+                  'OneWork',
                   style: TextStyle(color: Color(0xff0E9D57), fontSize: 32),
                 ),
               ),
+              7.27.verticalSpace,
               const Padding(
                 padding: EdgeInsets.only(left: 23),
                 child: Text(
@@ -45,6 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Color(0xff0D0D26), fontSize: 32),
                 ),
               ),
+              7.verticalSpace,
               const Padding(
                 padding: EdgeInsets.only(left: 23),
                 child: Text(
@@ -52,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Color(0xff0D0D26)),
                 ),
               ),
+              31.verticalSpace,
               // ignore: prefer_const_constructors
               Padding(
                 padding:
@@ -62,40 +58,42 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: CustomTextFrom(
                   hintext: '',
                   label: 'E-mail',
                 ),
               ),
               const Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: CustomTextFrom(
                   hintext: '',
                   label: 'Password',
                 ),
               ),
               const Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                 child: CustomTextFrom(
                   hintext: '',
                   label: 'Confirm Password',
                 ),
               ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              32.verticalSpace,
+              Center(
                 child: Container(
-                  padding: const EdgeInsets.all(12),
+                  height: 56.h,
+                  width: 327.w,
                   decoration: BoxDecoration(
                       color: const Color(0xff0E9D57),
                       borderRadius: BorderRadius.circular(16)),
-                  child: const Center(child: Text('Register',style: TextStyle(color: Colors.white),)),
+                  child: const Center(
+                      child: Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white),
+                  )),
                 ),
               ),
+              32.verticalSpace,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -119,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       )),
                 ],
               ),
-              24.verticalSpace,
+              32.verticalSpace,
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -161,10 +159,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               24.verticalSpace,
               InkWell(
-                 onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => const LoginPage()));
-                  },
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const LoginPage()));
+                },
                 child: SizedBox(
                   width: 350,
                   height: 20,
@@ -188,7 +186,7 @@ class _RegisterPageState extends State<RegisterPage> {
               )
             ],
           ),
-        ],
+        ),
       ),
     );
   }
