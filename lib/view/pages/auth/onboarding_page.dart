@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
-import 'package:one_work/view/components/pages/auth/sign_in.dart';
-import 'package:one_work/view/components/pages/style/style.dart';
+
+import '../../style/style.dart';
+
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -59,12 +60,12 @@ class _OnBoardingState extends State<OnBoarding> {
         showBullets: true,
         skipCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => SignInPage()),
+              MaterialPageRoute(builder: (_) => ()),
               (route) => false);
         },
         finishCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => SignInPage()),
+              MaterialPageRoute(builder: (_) => ()),
               (route) => false);
         },
       ),
