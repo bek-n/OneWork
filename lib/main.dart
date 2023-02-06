@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
                    size: 48,
                     textColor: Style.blackColor,
                   ),
+                  titleMedium: Style.textStyleRegular(size: 24,textColor: Color(0xff0D0D26)),
                 
                   displayMedium: Style.textStyleRegular(
                       size: 28,
@@ -57,24 +58,24 @@ class MyApp extends StatelessWidget {
               textTheme: TextTheme(
                  headlineLarge: Style.textStyleRegular(
                    size: 48,
-                    textColor: Style.blackColor,
+                    textColor: Style.whiteColor,
                   ),
-                
+                 titleMedium: Style.textStyleRegular(size: 24,textColor: Color(0xff0D0D26)),
                   displayMedium: Style.textStyleRegular(
                       size: 28,
-                      textColor: Style.blackColor,
+                      textColor: Style.whiteColor,
                   ),
                   displayLarge:  Style.textStyleRegular(
                       size: 34,
-                      textColor: Style.blackColor,
+                      textColor: Style.whiteColor,
                   ),
                   displaySmall:  Style.textStyleRegular(
                       size: 17,
-                      textColor: Style.blackColor,
+                      textColor: Style.whiteColor,
                   ),
                   headlineSmall:  Style.textStyleRegular2(
                     
-                      textColor: Style.blackColor,
+                      textColor: Style.whiteColor,
                   ),),
               scaffoldBackgroundColor: Style.darkBgcolorOfApp,
              
