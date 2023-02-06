@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
 import '../../style/style.dart';
+import 'Register_1.dart';
 
 
 class OnBoarding extends StatefulWidget {
@@ -60,12 +61,12 @@ class _OnBoardingState extends State<OnBoarding> {
         showBullets: true,
         skipCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => ()),
+              MaterialPageRoute(builder: (_) => const RegisterPage()),
               (route) => false);
         },
         finishCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => ()),
+              MaterialPageRoute(builder: (_) => const RegisterPage()),
               (route) => false);
         },
       ),
