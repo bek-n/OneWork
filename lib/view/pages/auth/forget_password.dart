@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:icons_plus/icons_plus.dart';
-
 import '../../components/custom_textfromfiled.dart';
-
-
+import '../../style/style.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -19,65 +16,64 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          24.verticalSpace,
-
-          IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_ios),
-          ),
-
-          const Padding(
-            padding: EdgeInsets.only(left: 23),
-            child: Text(
-              'Jobseek',
-              style: TextStyle(color: Color(0xff0E9D57), fontSize: 32),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            24.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back_ios),
+                ),
+              ],
             ),
-          ),
-          34.verticalSpace,
-          const Padding(
-            padding: EdgeInsets.only(left: 23),
-            child: Text(
-              'Forgot Password',
-              style: TextStyle(color: Color(0xff0D0D26), fontSize: 24),
+            Text(
+              'OneWork',
+              style: Style.textStyleRegular(
+                  size: 32, textColor: Style.primaryColor),
             ),
-          ),
-          34.verticalSpace,
-          const Padding(
-            padding: EdgeInsets.only(left: 23,right: 23),
-            child: Text(
-              'Enter your email or phone number, we will send you verification code',
-              style: TextStyle(color: Color(0xff0D0D26)),
+            32.verticalSpace,
+            Text('Forgot Password',
+                style: Theme.of(context).textTheme.displayMedium),
+            34.verticalSpace,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Text(
+                'Enter your email or phone number, we will send you verification code',
+                style: TextStyle(color: Color(0xff0D0D26)),
+              ),
             ),
-          ),
-          // ignore: prefer_const_constructors
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: const CustomTextFrom(
-              hintext: '',
-              label: 'E-mail',
+            30.verticalSpace,
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              child: CustomTextFrom(
+                hintext: '',
+                label: 'E-mail',
+              ),
             ),
-          ),
-         34.verticalSpace,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Container(
-              padding: const EdgeInsets.all(12),
+            Spacer(),
+            Container(
+              height: 56.h,
+              width: 327.w,
               decoration: BoxDecoration(
                   color: const Color(0xff0E9D57),
                   borderRadius: BorderRadius.circular(16)),
               child: const Center(
                   child: Text(
-                'Log in',
+                'Send Code',
                 style: TextStyle(color: Colors.white),
               )),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

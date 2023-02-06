@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 import '../../components/custom_textfromfiled.dart';
+import '../../components/google_facebook.dart';
 import '../../style/style.dart';
 import 'forget_password.dart';
 
@@ -125,39 +126,8 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           24.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                width: 56.w,
-                height: 56.h,
-                decoration: BoxDecoration(
-                    color: const Color(0xff000000).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Center(child: Logo(Logos.apple)),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 56.w,
-                  height: 56.h,
-                  decoration: BoxDecoration(
-                      color: const Color(0xff000000).withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(100)),
-                  child: Center(child: Logo(Logos.facebook_logo)),
-                ),
-              ),
-              Container(
-                width: 56.w,
-                height: 56.h,
-                decoration: BoxDecoration(
-                    color: const Color(0xff000000).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Center(child: Logo(Logos.google)),
-              ),
-            ],
-          ),
-          24.verticalSpace,
+          const GoogleFacebook(),
+          48.verticalSpace,
           SizedBox(
             width: 350,
             height: 20,
