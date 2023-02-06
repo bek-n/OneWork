@@ -10,7 +10,8 @@ class Style {
   static const whiteColor = Colors.white;
   static const blackColor = Colors.black;
   static const darkBgcolorOfApp = Color(0xff090A11);
-
+  static const lightBgcolorOfApp = Color(0xffFAFAFD); 
+  static const navBgcolorOfApp = Color(0xff121421);
   // ---------- Gradient   ---------- //
 
   // static const linearGradient = LinearGradient(
