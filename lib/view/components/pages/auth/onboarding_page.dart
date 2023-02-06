@@ -12,8 +12,8 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   final pages = [
     PageModel(
-      titleColor: Style.whiteColor,
-      bodyColor: Style.whiteColor,
+        titleColor: Style.whiteColor,
+        bodyColor: Style.whiteColor,
         color: const Color(0xFF5386E4),
         imageAssetPath: 'assets/images/1.png',
         title: 'Search your job',
@@ -21,8 +21,8 @@ class _OnBoardingState extends State<OnBoarding> {
             'Figure out your top five priorities whether it is company culture, salary.',
         doAnimateImage: true),
     PageModel(
-      titleColor: Style.whiteColor,
-      bodyColor: Style.whiteColor,
+        titleColor: Style.whiteColor,
+        bodyColor: Style.whiteColor,
         color: const Color(0xffFBBC05),
         imageAssetPath: 'assets/images/2.png',
         title: 'Browse jobs list',
@@ -30,18 +30,18 @@ class _OnBoardingState extends State<OnBoarding> {
             'Our job list include several  industries, so you can find the best job for you.',
         doAnimateImage: true),
     PageModel(
-      titleColor: Style.whiteColor,
-      bodyColor: Style.whiteColor,
-        color: const Color(0xff0E9D57),
+        titleColor: Style.whiteColor,
+        bodyColor: Style.whiteColor,
+        color: const Color(0xff5F4BB6),
         imageAssetPath: 'assets/images/3.png',
         title: 'Apply to best jobs',
         body:
             'You can apply to your desirable jobs very quickly and easily with ease.',
         doAnimateImage: true),
     PageModel(
-      titleColor: Style.whiteColor,
-      bodyColor: Style.whiteColor,
-        color: const Color(0xff5F4BB6),
+        titleColor: Style.whiteColor,
+        bodyColor: Style.whiteColor,
+        color: const Color(0xff0E9D57),
         imageAssetPath: 'assets/images/4.png',
         title: 'Make your career',
         body:
@@ -50,15 +50,17 @@ class _OnBoardingState extends State<OnBoarding> {
   ];
   @override
   Widget build(BuildContext context) {
-    return OverBoard(
-      pages: pages,
-      showBullets: true,
-      skipCallback: () {
-        // WRITE SKIP BUTTON ACTION HERE
-      },
-      finishCallback: () {
-        // WRITE THE FINISH BUTTON ACTION 
-      },
+    return Scaffold(
+      body: OverBoard(
+        pages: pages,
+        showBullets: true,
+        skipCallback: () {
+         naviga
+        },
+        finishCallback: () {
+          // WRITE THE FINISH BUTTON ACTION
+        },
+      ),
     );
   }
 }
