@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:one_work/view/components/pages/style/style.dart';
 
-class SplashScreen extends StatelessWidget {
+import 'onboarding_page.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    isLoading;
+    setState(() {});
+    Future.delayed(Duration(seconds: 4), () {
+      Navigator.of(context).push(MaterialPageRoute(builder: (_)=> OnBoarding()));
+      isLoading = false;
+      setState(() {
+        
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
