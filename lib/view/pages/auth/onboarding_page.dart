@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
-import '../../style/style.dart';
+
+import '../style/style.dart';
 import 'Register_1.dart';
 
 

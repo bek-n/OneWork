@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:one_work/view/style/style.dart';
+
 
 import '../../components/custom_textfromfiled.dart';
 import '../../components/google_facebook.dart';
+import '../style/style.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {

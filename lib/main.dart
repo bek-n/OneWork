@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_work/view/pages/auth/splash_screen.dart';
-import 'package:one_work/view/style/style.dart';
+import 'package:one_work/view/pages/style/style.dart';
+
 
 
 void main() {
@@ -15,18 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428, 926),
+        designSize: const Size(428, 926),
         minTextAdapt: true,
         splitScreenMode: true,
-      builder: (context,child) {
-        return MaterialApp(
-           debugShowCheckedModeBanner: false,
-          title: 'OneWork',
-          theme:  ThemeData(
+        builder: (context, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'OneWork',
+            theme: ThemeData(
               useMaterial3: true,
-              
               scaffoldBackgroundColor: Style.lightBgcolorOfApp,
-              
               textTheme: TextTheme(
                   headlineLarge: Style.textStyleRegular(
                    size: 48,
@@ -78,12 +77,9 @@ class MyApp extends StatelessWidget {
                       textColor: Style.whiteColor,
                   ),),
               scaffoldBackgroundColor: Style.darkBgcolorOfApp,
-             
             ),
-          home: const SplashScreen(),
-        );
-      }
-    );
+            home: const SplashScreen(),
+          );
+        });
   }
 }
-

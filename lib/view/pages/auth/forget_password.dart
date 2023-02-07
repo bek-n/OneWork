@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../components/custom_textfromfiled.dart';
-import '../../style/style.dart';
+import '../style/style.dart';
+
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
