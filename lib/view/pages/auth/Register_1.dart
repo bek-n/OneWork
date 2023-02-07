@@ -43,11 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 31.verticalSpace,
                 // ignore: prefer_const_constructors
-                const CustomTextFrom(
-                  hintext: '',
-                  label: 'Full Name',
-                ),
-                16.verticalSpace,
+
                 const CustomTextFrom(
                   hintext: '',
                   label: 'E-mail',
