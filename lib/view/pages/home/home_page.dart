@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_work/view/components/custom_textform.dart';
-import 'package:one_work/view/pages/style/style.dart';
+import 'package:one_work/view/style/style.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
+import 'package:one_work/view/pages/auth/Register_1.dart';
 import 'package:one_work/view/pages/auth/sign_in.dart';
 import 'package:one_work/view/pages/home/home_page.dart';
-import 'package:one_work/view/pages/style/style.dart';
+import 'package:one_work/view/style/style.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -54,16 +55,18 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: OverBoard(
+        finishText: 'Register',
+        activeBulletColor: Style.primaryDisabledColor,
         pages: pages,
         showBullets: true,
         skipCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => const HomePage()),
+              MaterialPageRoute(builder: (_) => const RegisterPage()),
               (route) => false);
         },
         finishCallback: () {
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (_) => const HomePage()),
+              MaterialPageRoute(builder: (_) => const RegisterPage()),
               (route) => false);
         },
       ),

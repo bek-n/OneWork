@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:one_work/view/pages/style/style.dart';
-
+import 'package:one_work/view/style/style.dart';
 import 'onboarding_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
     setState(() {});
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => OnBoarding()), (route) => false);
+          MaterialPageRoute(builder: (_) => const OnBoarding()), (route) => false);
       isLoading = false;
       setState(() {});
     });

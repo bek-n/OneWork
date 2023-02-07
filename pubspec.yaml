@@ -41,6 +41,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   intro_screen_onboarding_flutter: ^1.0.0
   flutter_overboard: ^3.1.1
+  icons_plus: ^3.0.0
   
 
 dev_dependencies:
