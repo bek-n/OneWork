@@ -5,7 +5,7 @@ import 'package:icons_plus/icons_plus.dart';
 
 import '../../components/custom_textfromfiled.dart';
 import '../../components/google_facebook.dart';
-import '../style/style.dart';
+import '../../style/style.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {

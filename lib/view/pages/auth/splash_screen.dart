@@ -4,7 +4,7 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 
 
-import '../style/style.dart';
+import '../../style/style.dart';
 import 'onboarding_page.dart';
 
 class SplashScreen extends StatefulWidget {
