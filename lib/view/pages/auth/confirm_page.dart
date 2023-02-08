@@ -8,8 +8,8 @@ import '../../../controller/auth_controller.dart';
 import '../../style/style.dart';
 
 class VerifyPage extends StatefulWidget {
-  final String email;
-  const VerifyPage({Key? key, required this.email}) : super(key: key);
+  final String? email;
+  const VerifyPage({Key? key,  this.email}) : super(key: key);
 
   @override
   State<VerifyPage> createState() => _VerifyPageState();
@@ -98,7 +98,7 @@ class _VerifyPageState extends State<VerifyPage> {
                 onPressed: () {
                   context.read<AuthController>().verifyEmail(
                       code: controller.text,
-                      email: widget.email,
+                      email: widget.email?? '',
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(builder: (_) => HomePage()),
