@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/domen/components/auth_button.dart';
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../style/style.dart';
 
@@ -60,19 +61,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 label: 'E-mail',
               ),
             ),
-            Spacer(),
-            Container(
-              height: 56.h,
-              width: 327.w,
-              decoration: BoxDecoration(
-                  color: const Color(0xff0E9D57),
-                  borderRadius: BorderRadius.circular(16)),
-              child: const Center(
-                  child: Text(
-                'Send Code',
-                style: TextStyle(color: Colors.white),
-              )),
-            ),
+            const Spacer(),
+            const AuthButton(text: 'Send Code')
           ],
         ),
       ),

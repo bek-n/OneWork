@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
                 ),
                 scaffoldBackgroundColor: Style.darkBgcolorOfApp,
               ),
-              home:  VerifyPage(),
+              home:  SplashScreen(),
             ),
           );
         });

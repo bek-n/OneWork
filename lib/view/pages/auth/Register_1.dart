@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/domen/components/auth_button.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
 import '../../domen/components/custom_textfromfiled.dart';
@@ -95,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     )));
                           });
                     },
-                    child:
+                    child: const AuthButton(text:  'Register')
                   ),
                 ),
                 32.verticalSpace,

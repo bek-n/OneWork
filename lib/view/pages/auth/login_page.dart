@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/domen/components/auth_button.dart';
 import 'package:one_work/view/domen/service/local_store.dart';
 import 'package:one_work/view/pages/auth/register_1.dart';
 import 'package:one_work/view/pages/home/home_page.dart';
@@ -76,26 +77,14 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GestureDetector(
-              onTap: () {
-                if (LocalStore.getAccessToken != null) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => HomePage()),
-                      (route) => false);
-                }
-              },
-              child: Container(
-                height: 56.h,
-                width: 327.w,
-                decoration: BoxDecoration(
-                    color: const Color(0xff0E9D57),
-                    borderRadius: BorderRadius.circular(16)),
-                child: const Center(
-                    child: Text(
-                  'Log in',
-                  style: TextStyle(color: Colors.white),
-                )),
-              ),
-            ),
+                onTap: () {
+                  if (LocalStore.getAccessToken != null) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const HomePage()),
+                        (route) => false);
+                  }
+                },
+                child: const AuthButton(text: 'Log in')),
           ),
           30.verticalSpace,
           InkWell(
