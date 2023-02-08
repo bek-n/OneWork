@@ -9,7 +9,7 @@ import '../../style/style.dart';
 
 class VerifyPage extends StatefulWidget {
   final String? email;
-  const VerifyPage({Key? key,  this.email}) : super(key: key);
+  const VerifyPage({Key? key, this.email}) : super(key: key);
 
   @override
   State<VerifyPage> createState() => _VerifyPageState();
@@ -41,31 +41,37 @@ class _VerifyPageState extends State<VerifyPage> {
               child: Row(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.18, vertical: 8.18),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(9.82)),
-                          color: Color.fromARGB(255, 234, 175, 194)),
-                      child: const Icon(
-                        Icons.arrow_back_ios,
-                        color: Color(0xffF43F5E),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24),
-                    child: Text('Verification',
-                        style: Style.textStyleRegular(size: 26)),
-                  )
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                        ),
+                      )),
                 ],
               ),
             ),
-            150.verticalSpace,
-            const Text('Code has been send to your email'),
+            56.verticalSpace,
+            Text(
+              'OneWork',
+              style: Style.textStyleRegular(
+                  size: 25, textColor: Style.primaryColor),
+            ),
+            27.verticalSpace,
+            Text(
+              'Verify Code',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            17.verticalSpace,
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Text(
+                  'Enter your verification code from your email that we’ve sent'),
+            ),
             Padding(
               padding: const EdgeInsets.all(32.0),
               child: PinFieldAutoFill(
@@ -98,10 +104,10 @@ class _VerifyPageState extends State<VerifyPage> {
                 onPressed: () {
                   context.read<AuthController>().verifyEmail(
                       code: controller.text,
-                      email: widget.email?? '',
+                      email: widget.email ?? '',
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (_) => HomePage()),
+                            MaterialPageRoute(builder: (_) => const HomePage()),
                             (route) => false);
                       });
                 },

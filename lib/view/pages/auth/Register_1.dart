@@ -95,18 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     )));
                           });
                     },
-                    child: Container(
-                      height: 56.h,
-                      width: 327.w,
-                      decoration: BoxDecoration(
-                          color: const Color(0xff0E9D57),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: const Center(
-                          child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white),
-                      )),
-                    ),
+                    child:
                   ),
                 ),
                 32.verticalSpace,
