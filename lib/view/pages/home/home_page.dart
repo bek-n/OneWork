@@ -30,12 +30,12 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Welcome to One Work!',
-                          style: Style.textStyleRegular(size: 14),
+                          'Welcome to OneWork!',
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                         Text(
                           'Discover Jobs 🔥',
-                          style: Style.textStyleRegular(size: 24),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ],
                     ),
@@ -86,15 +86,16 @@ class _HomePageState extends State<HomePage> {
                 34.verticalSpace,
                 Row(
                   children: [
-                    Text('Featured Jobs',
-                        style: Style.textStyleRegular(
-                            size: 20, textColor: Style.blackColor)),
+                    Text(
+                      'Featured Jobs',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
                     const Spacer(),
                     GestureDetector(
                       child: Text(
                         'See all',
                         style: Style.textStyleRegular(
-                          size: 16,
+                          size: 14,
                           textColor: Style.greyColor90,
                         ),
                       ),
@@ -127,15 +128,16 @@ class _HomePageState extends State<HomePage> {
                 34.verticalSpace,
                 Row(
                   children: [
-                    Text('Popular Jobs',
-                        style: Style.textStyleRegular(
-                            size: 20, textColor: Style.blackColor)),
+                    Text(
+                      'Popular Jobs',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
                     const Spacer(),
                     GestureDetector(
                       child: Text(
                         'See all',
                         style: Style.textStyleRegular(
-                          size: 16,
+                          size: 14,
                           textColor: Style.greyColor90,
                         ),
                       ),
