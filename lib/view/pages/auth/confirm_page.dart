@@ -59,7 +59,7 @@ class _VerifyPageState extends State<VerifyPage> {
             Text(
               'OneWork',
               style: Style.textStyleRegular(
-                  size: 25, textColor: Style.primaryColor),
+                  size: 20, textColor: Style.primaryColor),
             ),
             27.verticalSpace,
             Text(
