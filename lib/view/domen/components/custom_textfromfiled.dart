@@ -12,7 +12,9 @@ class CustomTextFrom extends StatelessWidget {
   final String? label;
   final ValueChanged<String>? onChange;
   final String? obscuringCharacter;
-   final bool isObscure;
+  final bool isObscure;
+  final Color? fillColor;
+  final bool? filled;
 
   const CustomTextFrom(
       {Key? key,
@@ -22,7 +24,11 @@ class CustomTextFrom extends StatelessWidget {
       this.label,
       this.onChange,
       this.perfixicon,
-      this.controller, this.obscuringCharacter, required this.isObscure})
+      this.controller,
+      this.obscuringCharacter,
+      required this.isObscure,
+      this.fillColor,
+      this.filled})
       : super(key: key);
 
   @override
@@ -36,19 +42,21 @@ class CustomTextFrom extends StatelessWidget {
           isObscure ? (context.watch<AuthController>().isVisibility) : false,
       controller: controller,
       decoration: InputDecoration(
-         suffixIcon: suffixicon ??
-              (isObscure
-                  ? IconButton(
-                      onPressed: () {
-                        context.read<AuthController>().onChange();
-                      },
-                      icon: context.watch<AuthController>().isVisibility
-                          ? const Icon(Icons.visibility)
-                          : const Icon(Icons.visibility_off),
-                    )
-                  : const SizedBox.shrink()),
+        fillColor: fillColor,
+        filled: filled,
+        suffixIcon: suffixicon ??
+            (isObscure
+                ? IconButton(
+                    onPressed: () {
+                      context.read<AuthController>().onChange();
+                    },
+                    icon: context.watch<AuthController>().isVisibility
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
+                  )
+                : const SizedBox.shrink()),
         prefix: perfixicon,
-        suffix: suffixicon,
+        // suffix: suffixicon,
         label: Text('$label'),
         labelStyle: const TextStyle(color: Color(0xffBDBEC2)),
         hintText: hintext,
