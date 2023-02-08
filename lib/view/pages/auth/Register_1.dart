@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:icons_plus/icons_plus.dart';
-
-
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../domen/components/google_facebook.dart';
 import '../../style/style.dart';

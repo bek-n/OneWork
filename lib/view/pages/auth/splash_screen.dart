@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:one_work/view/pages/home/home_page.dart';
 
-
-
+import '../../domen/service/local_store.dart';
 import '../../style/style.dart';
 import 'onboarding_page.dart';
 
@@ -20,14 +20,22 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     isLoading;
+    checkToken();
+    isLoading = false;
     setState(() {});
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => OnBoarding()), (route) => false);
-      isLoading = false;
-      setState(() {});
-    });
     super.initState();
+  }
+
+  checkToken() async {
+    if (await LocalStore.getAccessToken() == null) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const OnBoarding()),
+          (route) => false);
+    } else {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const HomePage()),
+          (route) => false);
+    }
   }
 
   @override
