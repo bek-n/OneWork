@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../components/custom_textfromfiled.dart';
-import '../../components/google_facebook.dart';
-import '../../style/style.dart';
+import '../../util/widgets/custom_textfromfiled.dart';
+import '../../util/widgets/google_facebook.dart';
+import '../../util/style/style.dart';
 import 'forget_password.dart';
 
 class LoginPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../components/custom_textfromfiled.dart';
-import '../../style/style.dart';
+import '../../util/widgets/custom_textfromfiled.dart';
+import '../../util/style/style.dart';
 
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
@@ -59,7 +59,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 label: 'E-mail',
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Container(
               height: 56.h,
               width: 327.w,
