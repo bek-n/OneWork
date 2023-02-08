@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import '../../../controller/auth_controller.dart';
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../domen/components/google_facebook.dart';
 import '../../style/style.dart';
+import 'confirm_page.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -75,19 +78,36 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintext: '',
                   label: 'Confirm Password',
                 ),
+                 context.watch<AuthController>().wrongPassword != null
+                ? Text(context.watch<AuthController>().wrongPassword ?? "")
+                : SizedBox.shrink(),
                 32.verticalSpace,
                 Center(
-                  child: Container(
-                    height: 56.h,
-                    width: 327.w,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff0E9D57),
-                        borderRadius: BorderRadius.circular(16)),
-                    child: const Center(
-                        child: Text(
-                      'Register',
-                      style: TextStyle(color: Colors.white),
-                    )),
+                  child: GestureDetector(
+                    onTap: () {
+                       context.read<AuthController>().signUp(
+                      email: email.text,
+                      password: password.text,
+                      confirmPassword: confirmPassword.text,
+                      onSuccess: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => VerifyPage(
+                                  email: email.text,
+                                )));
+                      });
+                    },
+                    child: Container(
+                      height: 56.h,
+                      width: 327.w,
+                      decoration: BoxDecoration(
+                          color: const Color(0xff0E9D57),
+                          borderRadius: BorderRadius.circular(16)),
+                      child: const Center(
+                          child: Text(
+                        'Register',
+                        style: TextStyle(color: Colors.white),
+                      )),
+                    ),
                   ),
                 ),
                 32.verticalSpace,

@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import '../view/domen/repository/auth_repo.dart';
 import '../view/domen/service/local_store.dart';
 
-
 class AuthController extends ChangeNotifier {
   String? wrongPassword;
+  bool isLoading = false;
 
   signUp({
     required String email,
@@ -14,9 +14,13 @@ class AuthController extends ChangeNotifier {
     required VoidCallback onSuccess,
   }) async {
     if (password == confirmPassword) {
+      isLoading = true;
+      notifyListeners();
       final AuthRepo authRepo = AuthRepo();
       var res = await authRepo.signUp(email: email, password: password);
       if (res?.statusCode == 200) {
+         isLoading = false;
+      notifyListeners();
         onSuccess();
       }
     } else {

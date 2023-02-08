@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.0.17
   sms_autofill: ^2.2.0
   provider: ^6.0.5
+  animated_icon_button: ^1.0.2
   
 
 dev_dependencies:
