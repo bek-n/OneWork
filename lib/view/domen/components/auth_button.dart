@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/style/style.dart';
 
 class AuthButton extends StatelessWidget {
   final String text;
@@ -13,10 +14,10 @@ class AuthButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color(0xff0E9D57),
           borderRadius: BorderRadius.circular(16)),
-      child:  Center(
+      child: Center(
           child: Text(
-       text,
-        style: const TextStyle(color: Colors.white),
+        text,
+        style: Style.textStyleRegular2(textColor: Style.whiteColor),
       )),
     );
   }
