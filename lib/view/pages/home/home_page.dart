@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_work/view/domen/components/custom_textform.dart';
+import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
 import 'package:one_work/view/style/style.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,8 +60,6 @@ class _HomePageState extends State<HomePage> {
                         controller: homeController,
                         label: 'Search a job or position',
                         hintext: '',
-                        colorFill: Style.greyColor65,
-                        radius: 16,
                       ),
                     ),
                     const Spacer(),

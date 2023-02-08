@@ -19,10 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    isLoading;
-    checkToken();
-    isLoading = false;
-    setState(() {});
+    Future.delayed(Duration(seconds: 3), () {
+      isLoading;
+      checkToken();
+      isLoading = false;
+      setState(() {});
+    });
+
     super.initState();
   }
 

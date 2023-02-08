@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFrom extends StatelessWidget {
-  
   final String hintext;
   final Widget? suffixicon;
   final Icon? perfixicon;
+   final TextEditingController? controller;
 
   final TextInputType keyboardType;
 
@@ -14,23 +14,23 @@ class CustomTextFrom extends StatelessWidget {
 
   const CustomTextFrom(
       {Key? key,
-      
       required this.hintext,
       this.keyboardType = TextInputType.text,
       this.suffixicon,
       this.label,
-      this.onChange, 
-      this.perfixicon})
+      this.onChange,
+      this.perfixicon,  this.controller})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       validator: (value) {
         return '';
       },
-      
       keyboardType: keyboardType,
+      controller: controller,
       decoration: InputDecoration(
         label: Text('$label'),
         labelStyle: const TextStyle(color: Color(0xffBDBEC2)),

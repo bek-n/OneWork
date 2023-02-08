@@ -13,7 +13,25 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  TextEditingController textEditingController = TextEditingController();
+  late TextEditingController email;
+  late TextEditingController password;
+  late TextEditingController confirmPassword;
+
+  @override
+  void initState() {
+    email = TextEditingController();
+    password = TextEditingController();
+    confirmPassword = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    password.dispose();
+    confirmPassword.dispose();
+    email.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +58,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Color(0xff0D0D26)),
                 ),
                 31.verticalSpace,
-                // ignore: prefer_const_constructors
-
                 const CustomTextFrom(
+                  controller: email,
                   hintext: '',
                   label: 'E-mail',
                 ),
                 16.verticalSpace,
                 const CustomTextFrom(
+                  controller: password,
                   hintext: '',
                   label: 'Password',
                 ),
                 16.verticalSpace,
                 const CustomTextFrom(
+                  controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',
                 ),
