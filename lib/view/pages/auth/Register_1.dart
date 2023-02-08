@@ -36,7 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+   
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -58,19 +58,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Color(0xff0D0D26)),
                 ),
                 31.verticalSpace,
-                const CustomTextFrom(
+                 CustomTextFrom(
                   controller: email,
                   hintext: '',
                   label: 'E-mail',
                 ),
                 16.verticalSpace,
-                const CustomTextFrom(
+                 CustomTextFrom(
                   controller: password,
                   hintext: '',
                   label: 'Password',
                 ),
                 16.verticalSpace,
-                const CustomTextFrom(
+                 CustomTextFrom(
                   controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',
