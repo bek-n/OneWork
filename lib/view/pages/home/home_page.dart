@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                       child: CustomTextFrom(
                         controller: homeController,
                         label: 'Search a job or position',
-                        hintext: '',
+                        hintext: '', isObscure: false,
                       ),
                     ),
                     const Spacer(),

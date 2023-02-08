@@ -63,14 +63,14 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: CustomTextFrom(
               hintext: '',
-              label: 'E-mail',
+              label: 'E-mail', isObscure: false,
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: CustomTextFrom(
               hintext: '',
-              label: 'Password',
+              label: 'Password', isObscure: true,
             ),
           ),
           32.verticalSpace,

@@ -65,18 +65,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   controller: email,
                   hintext: '',
                   label: 'E-mail',
+                  isObscure: false,
                 ),
                 16.verticalSpace,
                 CustomTextFrom(
                   controller: password,
                   hintext: '',
                   label: 'Password',
+                  isObscure: true,
                 ),
                 16.verticalSpace,
                 CustomTextFrom(
                   controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',
+                  isObscure: true,
                 ),
                 context.watch<AuthController>().wrongPassword != null
                     ? Text(context.watch<AuthController>().wrongPassword ?? "")
@@ -84,20 +87,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 32.verticalSpace,
                 Center(
                   child: GestureDetector(
-                    onTap: () {
-                      context.read<AuthController>().signUp(
-                          email: email.text,
-                          password: password.text,
-                          confirmPassword: confirmPassword.text,
-                          onSuccess: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => VerifyPage(
-                                      email: email.text,
-                                    )));
-                          });
-                    },
-                    child: const AuthButton(text:  'Register')
-                  ),
+                      onTap: () {
+                        context.read<AuthController>().signUp(
+                            email: email.text,
+                            password: password.text,
+                            confirmPassword: confirmPassword.text,
+                            onSuccess: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (_) => VerifyPage(
+                                        email: email.text,
+                                      )));
+                            });
+                      },
+                      child: const AuthButton(text: 'Register')),
                 ),
                 32.verticalSpace,
                 Row(

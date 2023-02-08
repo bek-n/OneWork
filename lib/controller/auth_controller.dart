@@ -6,6 +6,7 @@ import '../view/domen/service/local_store.dart';
 class AuthController extends ChangeNotifier {
   String? wrongPassword;
   bool isLoading = false;
+  bool isVisibility = true;
 
   signUp({
     required String email,
@@ -43,5 +44,10 @@ class AuthController extends ChangeNotifier {
       notifyListeners();
       onSuccess();
     }
+  }
+
+  onChange() {
+    isVisibility = !isVisibility;
+    notifyListeners();
   }
 }

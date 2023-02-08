@@ -58,7 +58,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               ),
               child: CustomTextFrom(
                 hintext: '',
-                label: 'E-mail',
+                label: 'E-mail', isObscure: false,
               ),
             ),
             const Spacer(),
