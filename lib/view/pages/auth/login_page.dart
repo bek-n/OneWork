@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/domen/service/local_store.dart';
+import 'package:one_work/view/pages/auth/register_1.dart';
+import 'package:one_work/view/pages/home/home_page.dart';
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../domen/components/google_facebook.dart';
 import '../../style/style.dart';
@@ -72,17 +75,26 @@ class _LoginPageState extends State<LoginPage> {
           32.verticalSpace,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Container(
-              height: 56.h,
-              width: 327.w,
-              decoration: BoxDecoration(
-                  color: const Color(0xff0E9D57),
-                  borderRadius: BorderRadius.circular(16)),
-              child: const Center(
-                  child: Text(
-                'Log in',
-                style: TextStyle(color: Colors.white),
-              )),
+            child: GestureDetector(
+              onTap: () {
+                if (LocalStore.getAccessToken != null) {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => HomePage()),
+                      (route) => false);
+                }
+              },
+              child: Container(
+                height: 56.h,
+                width: 327.w,
+                decoration: BoxDecoration(
+                    color: const Color(0xff0E9D57),
+                    borderRadius: BorderRadius.circular(16)),
+                child: const Center(
+                    child: Text(
+                  'Log in',
+                  style: TextStyle(color: Colors.white),
+                )),
+              ),
             ),
           ),
           30.verticalSpace,
@@ -131,7 +143,9 @@ class _LoginPageState extends State<LoginPage> {
             height: 20,
             child: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (_) => RegisterPage()),
+                    (route) => false);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

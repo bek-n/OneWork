@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:one_work/view/pages/home/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../controller/auth_controller.dart';
 import '../../style/style.dart';
-
 
 class VerifyPage extends StatefulWidget {
   final String email;
@@ -65,8 +65,7 @@ class _VerifyPageState extends State<VerifyPage> {
               ),
             ),
             150.verticalSpace,
-            const Text(
-                'Code has been send to your email'),
+            const Text('Code has been send to your email'),
             Padding(
               padding: const EdgeInsets.all(32.0),
               child: PinFieldAutoFill(
@@ -97,9 +96,15 @@ class _VerifyPageState extends State<VerifyPage> {
                         MaterialStateProperty.all(Style.primaryDisabledColor)),
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 onPressed: () {
-                context.read<AuthController>().verifyEmail(
-                    code: controller.text, email: widget.email, onSuccess: () {});
-              },
+                  context.read<AuthController>().verifyEmail(
+                      code: controller.text,
+                      email: widget.email,
+                      onSuccess: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (_) => HomePage()),
+                            (route) => false);
+                      });
+                },
                 child: context.watch<AuthController>().isLoading
                     ? Padding(
                         padding: const EdgeInsets.all(2.0),

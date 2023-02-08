@@ -39,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-   
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -61,40 +60,40 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Color(0xff0D0D26)),
                 ),
                 31.verticalSpace,
-                 CustomTextFrom(
+                CustomTextFrom(
                   controller: email,
                   hintext: '',
                   label: 'E-mail',
                 ),
                 16.verticalSpace,
-                 CustomTextFrom(
+                CustomTextFrom(
                   controller: password,
                   hintext: '',
                   label: 'Password',
                 ),
                 16.verticalSpace,
-                 CustomTextFrom(
+                CustomTextFrom(
                   controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',
                 ),
-                 context.watch<AuthController>().wrongPassword != null
-                ? Text(context.watch<AuthController>().wrongPassword ?? "")
-                : SizedBox.shrink(),
+                context.watch<AuthController>().wrongPassword != null
+                    ? Text(context.watch<AuthController>().wrongPassword ?? "")
+                    : SizedBox.shrink(),
                 32.verticalSpace,
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                       context.read<AuthController>().signUp(
-                      email: email.text,
-                      password: password.text,
-                      confirmPassword: confirmPassword.text,
-                      onSuccess: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (_) => VerifyPage(
-                                  email: email.text,
-                                )));
-                      });
+                      context.read<AuthController>().signUp(
+                          email: email.text,
+                          password: password.text,
+                          confirmPassword: confirmPassword.text,
+                          onSuccess: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (_) => VerifyPage(
+                                      email: email.text,
+                                    )));
+                          });
                     },
                     child: Container(
                       height: 56.h,
@@ -139,8 +138,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 32.verticalSpace,
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => const LoginPage()));
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => LoginPage()),
+                        (route) => false);
                   },
                   child: Center(
                     child: Column(
