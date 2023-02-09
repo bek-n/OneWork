@@ -42,6 +42,8 @@ dependencies:
   intro_screen_onboarding_flutter: ^1.0.0
   flutter_overboard: ^3.1.1
   icons_plus: ^3.0.0
+  dio: ^4.0.6
+  shared_preferences: ^2.0.17
   
 
 dev_dependencies:
