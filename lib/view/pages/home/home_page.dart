@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
 import 'package:one_work/view/style/style.dart';
 
@@ -72,18 +71,21 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const Spacer(),
-                    Container(
-                      height: 48.h,
-                      width: 48.w,
-                      decoration: const BoxDecoration(
-                        color: Style.greyColor65,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(16),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 24),
+                      child: Container(
+                        height: 48.h,
+                        width: 48.w,
+                        decoration: const BoxDecoration(
+                          color: Style.greyColor65,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(16),
+                          ),
                         ),
-                      ),
-                      child: const Icon(
-                        Icons.sort,
-                        color: Style.primaryColor,
+                        child: const Icon(
+                          Icons.sort,
+                          color: Style.primaryColor,
+                        ),
                       ),
                     )
                   ],
@@ -97,11 +99,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      child: Text(
-                        'See all',
-                        style: Style.textStyleRegular(
-                          size: 14,
-                          textColor: Style.greyColor90,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 24),
+                        child: Text(
+                          'See all',
+                          style: Style.textStyleRegular(
+                            size: 14,
+                            textColor: Style.greyColor90,
+                          ),
                         ),
                       ),
                     ),
@@ -138,11 +143,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      child: Text(
-                        'See all',
-                        style: Style.textStyleRegular(
-                          size: 14,
-                          textColor: Style.primaryColor,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 24),
+                        child: Text(
+                          'See all',
+                          style: Style.textStyleRegular(
+                            size: 14,
+                            textColor: Style.greyColor90,
+                          ),
                         ),
                       ),
                     ),
@@ -155,33 +163,37 @@ class _HomePageState extends State<HomePage> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: 6,
                     itemBuilder: (context, index) {
-                      return Container(
-                          width: 280.w,
-                          height: 74.h,
-                          margin: const EdgeInsets.only(bottom: 16),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 16),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                25.horizontalSpace,
-                                Image.network(
-                                  'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
-                                  height: 45,
-                                  width: 45,
-                                ),
-                                16.horizontalSpace,
-                                Text(
-                                  'Jr Executive',
-                                  style: Theme.of(context).textTheme.titleSmall,
-                                ),
-                              ],
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 24),
+                        child: Container(
+                            margin: EdgeInsets.only(bottom: 17),
+                            width: 280.w,
+                            height: 74.h,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(24),
                             ),
-                          ));
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 16),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  25.horizontalSpace,
+                                  Image.network(
+                                    'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
+                                    height: 45,
+                                    width: 45,
+                                  ),
+                                  16.horizontalSpace,
+                                  Text(
+                                    'Jr Executive',
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                ],
+                              ),
+                            )),
+                      );
                     },
                   ),
                 ),
