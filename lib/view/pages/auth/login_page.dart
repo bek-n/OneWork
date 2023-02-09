@@ -4,6 +4,8 @@ import 'package:one_work/view/domen/components/auth_button.dart';
 import 'package:one_work/view/domen/service/local_store.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/pages/home/home_page.dart';
+import 'package:provider/provider.dart';
+import '../../../controller/auth_controller.dart';
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../domen/components/google_facebook.dart';
 import '../../style/style.dart';
@@ -17,7 +19,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController textEditingController = TextEditingController();
+  late TextEditingController password;
+  late TextEditingController email;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    password = TextEditingController();
+    email = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    password.dispose();
+    email.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,18 +77,40 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           47.verticalSpace,
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: CustomTextFrom(
+              validator: (s) {
+                final bool emailValid = RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    .hasMatch(s ?? "");
+
+                if (s?.isEmpty ?? true) {
+                  return "Please enter  email";
+                } else if (!emailValid) {
+                  return "Email format not correct";
+                }
+                return null;
+              },
+              controller: email,
               hintext: '',
-              label: 'E-mail', isObscure: false,
+              label: 'E-mail',
+              isObscure: false,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: CustomTextFrom(
+              controller: password,
               hintext: '',
-              label: 'Password', isObscure: true,
+              label: 'Password',
+              isObscure: true,
+               validator: (s) {
+                  if (s?.isEmpty ?? true) {
+                    return"Please enter password";
+                  }
+                  return null;
+                },
             ),
           ),
           32.verticalSpace,
@@ -78,11 +118,14 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GestureDetector(
                 onTap: () {
-                  if (LocalStore.getAccessToken != null) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (_) => const HomePage()),
-                        (route) => false);
-                  }
+                 if (formKey.currentState?.validate() ?? false) {
+                    context.read<AuthController>().login(
+                          email: email.text,
+                          password: password.text,
+                          onSuccess: () {
+                             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_)=>const HomePage()), (route) => false);
+                          });
+                    }
                 },
                 child: const AuthButton(text: 'Log in')),
           ),

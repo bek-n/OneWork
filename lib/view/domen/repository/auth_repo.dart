@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+
 import '../interface/auth_facade.dart';
 import '../model/profile_model.dart';
 import '../model/token_model.dart';

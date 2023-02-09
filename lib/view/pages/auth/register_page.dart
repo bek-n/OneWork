@@ -22,7 +22,6 @@ class _RegisterPageState extends State<RegisterPage> {
   late TextEditingController confirmPassword;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
   @override
   void initState() {
     email = TextEditingController();
@@ -65,17 +64,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 31.verticalSpace,
                 CustomTextFrom(
                   validator: (s) {
-                  final bool emailValid = RegExp(
-                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                      .hasMatch(s ?? "");
+                    final bool emailValid = RegExp(
+                            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(s ?? "");
 
-                  if (s?.isEmpty ?? true) {
-                    return "Please enter  email";
-                  } else if (!emailValid) {
-                    return "Email format not correct";
-                  }
-                  return null;
-                },
+                    if (s?.isEmpty ?? true) {
+                      return "Please enter  email";
+                    } else if (!emailValid) {
+                      return "Email format not correct";
+                    }
+                    return null;
+                  },
                   controller: email,
                   hintext: '',
                   label: 'E-mail',
@@ -84,11 +83,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 16.verticalSpace,
                 CustomTextFrom(
                   validator: (s) {
-                  if (s?.isEmpty ?? true) {
-                    return "Please enter password";
-                  }
-                  return null;
-                },
+                    if (s?.isEmpty ?? true) {
+                      return "Please enter password";
+                    }
+                    return null;
+                  },
                   controller: password,
                   hintext: '',
                   label: 'Password',
@@ -97,13 +96,13 @@ class _RegisterPageState extends State<RegisterPage> {
                 16.verticalSpace,
                 CustomTextFrom(
                   validator: (s) {
-                  if (s?.isEmpty ?? true) {
-                    return "Password Confirmation toliqmas";
-                  } else if (password.text != s) {
-                    return "Password Confirmation bir xil emas";
-                  }
-                  return null;
-                },
+                    if (s?.isEmpty ?? true) {
+                      return "Please enter password confirmation";
+                    } else if (password.text != s) {
+                      return "Password confirmation does not match ";
+                    }
+                    return null;
+                  },
                   controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',
@@ -116,16 +115,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 Center(
                   child: GestureDetector(
                       onTap: () {
-                        context.read<AuthController>().signUp(
-                            email: email.text,
-                            password: password.text,
-                            confirmPassword: confirmPassword.text,
-                            onSuccess: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) => VerifyPage(
-                                        email: email.text,
-                                      )));
-                            });
+                        if (formKey.currentState?.validate() ?? false) {
+                          context.read<AuthController>().signUp(
+                              email: email.text,
+                              password: password.text,
+                              confirmPassword: confirmPassword.text,
+                              onSuccess: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => VerifyPage(
+                                          email: email.text,
+                                        )));
+                              });
+                        }
                       },
                       child: const AuthButton(text: 'Register')),
                 ),

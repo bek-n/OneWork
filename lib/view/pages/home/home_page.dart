@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
+import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 
@@ -16,10 +17,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController homeController = TextEditingController();
+  late TextEditingController homeController;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<AuthController>().getUser();
+      homeController = TextEditingController();
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    homeController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<AuthController>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -154,9 +171,18 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.red,
                     ),
                     16.horizontalSpace,
-                    Text('Logout',
-                        style: Style.textStyleRegular2(
-                            size: 17, textColor: Colors.red))
+                    GestureDetector(
+                      onTap: () {
+                        context.read<AuthController>().logOut();
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (_) => const RegisterPage()),
+                            (route) => false);
+                      },
+                      child: Text('Logout',
+                          style: Style.textStyleRegular2(
+                              size: 17, textColor: Colors.red)),
+                    )
                   ],
                 ),
               ),
