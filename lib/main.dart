@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'OneWork',
               theme: ThemeData(
+                primaryColor: Style.whiteColor,
                 useMaterial3: true,
                 scaffoldBackgroundColor: Style.lightBgcolorOfApp,
                 textTheme: TextTheme(
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               darkTheme: ThemeData(
+                  primaryColor: Style.navBgcolorOfApp,
                 bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                     backgroundColor: Style.navBgcolorOfApp),
                 textTheme: TextTheme(

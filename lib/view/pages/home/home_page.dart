@@ -19,40 +19,41 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          centerTitle: true,
+          actions: [
+            SizedBox(
+              height: 60.h,
+              width: 60.w,
+              child: Image.asset(
+                'assets/images/1.png',
+              ),
+            ),
+          ],
+          title: Column(
+            children: [
+              Text(
+                'Welcome to OneWork!',
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+              Text(
+                'Discover Jobs 🔥',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ],
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent),
+      drawer: Drawer(),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.only(left: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Welcome to OneWork!',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                        Text(
-                          'Discover Jobs 🔥',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    SizedBox(
-                      height: 60.h,
-                      width: 60.w,
-                      child: Image.asset(
-                        'assets/images/1.png',
-                      ),
-                    )
-                  ],
-                ),
                 34.verticalSpace,
                 Row(
                   children: [
@@ -141,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                         'See all',
                         style: Style.textStyleRegular(
                           size: 14,
-                          textColor: Style.greyColor90,
+                          textColor: Style.primaryColor,
                         ),
                       ),
                     ),
@@ -155,16 +156,32 @@ class _HomePageState extends State<HomePage> {
                     itemCount: 6,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: const EdgeInsets.only(bottom: 16),
-                        decoration: BoxDecoration(
+                          width: 280.w,
+                          height: 74.h,
+                          margin: const EdgeInsets.only(bottom: 16),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
                             borderRadius: BorderRadius.circular(24),
-                            color: Style.greyColor90),
-                        width: 280,
-                        height: 74.h,
-                        child: const Center(
-                          child: Text('Birnimalar'),
-                        ),
-                      );
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                25.horizontalSpace,
+                                Image.network(
+                                  'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
+                                  height: 45,
+                                  width: 45,
+                                ),
+                                16.horizontalSpace,
+                                Text(
+                                  'Jr Executive',
+                                  style: Theme.of(context).textTheme.titleSmall,
+                                ),
+                              ],
+                            ),
+                          ));
                     },
                   ),
                 ),
