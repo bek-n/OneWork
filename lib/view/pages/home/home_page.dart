@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
 import 'package:one_work/view/style/style.dart';
+import 'package:provider/provider.dart';
 
 import '../../domen/components/home_page_featured_jobs.dart';
 
@@ -44,7 +47,123 @@ class _HomePageState extends State<HomePage> {
           ),
           elevation: 0,
           backgroundColor: Colors.transparent),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/2.png',
+                height: 104,
+                width: 104,
+              ),
+              12.verticalSpace,
+              // Text(context.watch<AuthController>().email),
+              Text(
+                'someone email',
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+              Text(
+                'Job Position',
+                style:
+                    Style.textStyleRegular2(size: 13, textColor: Colors.grey),
+              ),
+              Text(
+                'View Profile',
+                style: Style.textStyleRegular2(
+                    size: 14, textColor: Style.primaryColor),
+              ),
+              40.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(Icons.info_outlined),
+                    16.horizontalSpace,
+                    Text(
+                      'Personal Info',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  ],
+                ),
+              ),
+              28.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(Icons.list_alt),
+                    16.horizontalSpace,
+                    Text(
+                      'Applications',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  ],
+                ),
+              ),
+              79.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(Icons.insert_drive_file_outlined),
+                    16.horizontalSpace,
+                    Text(
+                      'Resumes',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  ],
+                ),
+              ),
+              28.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(Icons.work_outline),
+                    16.horizontalSpace,
+                    Text(
+                      'Portfolio',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  ],
+                ),
+              ),
+              79.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(Icons.settings),
+                    16.horizontalSpace,
+                    Text(
+                      'Settings',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    )
+                  ],
+                ),
+              ),
+              28.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.only(left: 40),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.logout,
+                      color: Colors.red,
+                    ),
+                    16.horizontalSpace,
+                    Text('Logout',
+                        style: Style.textStyleRegular2(
+                            size: 17, textColor: Colors.red))
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(

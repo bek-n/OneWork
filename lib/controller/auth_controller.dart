@@ -7,6 +7,7 @@ class AuthController extends ChangeNotifier {
   String? wrongPassword;
   bool isLoading = false;
   bool isVisibility = true;
+  String email = '';
 
   signUp({
     required String email,
@@ -19,6 +20,7 @@ class AuthController extends ChangeNotifier {
     if (password == confirmPassword) {
       final AuthRepo authRepo = AuthRepo();
       var res = await authRepo.signUp(email: email, password: password);
+      email = email;
       if (res?.statusCode == 200) {
         isLoading = false;
         notifyListeners();
