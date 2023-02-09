@@ -15,6 +15,7 @@ class CustomTextFrom extends StatelessWidget {
   final bool isObscure;
   final Color? fillColor;
   final bool? filled;
+  final FormFieldValidator? validator;
 
   const CustomTextFrom(
       {Key? key,
@@ -28,15 +29,14 @@ class CustomTextFrom extends StatelessWidget {
       this.obscuringCharacter,
       required this.isObscure,
       this.fillColor,
-      this.filled})
+      this.filled,
+      this.validator})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {
-        return '';
-      },
+      validator: validator,
       keyboardType: keyboardType,
       obscureText:
           isObscure ? (context.watch<AuthController>().isVisibility) : false,

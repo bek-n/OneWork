@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_work/view/domen/components/auth_button.dart';
 import 'package:one_work/view/domen/service/local_store.dart';
-import 'package:one_work/view/pages/auth/register_1.dart';
+import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/pages/home/home_page.dart';
 import '../../domen/components/custom_textfromfiled.dart';
 import '../../domen/components/google_facebook.dart';

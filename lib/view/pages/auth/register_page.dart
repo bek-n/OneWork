@@ -20,6 +20,8 @@ class _RegisterPageState extends State<RegisterPage> {
   late TextEditingController email;
   late TextEditingController password;
   late TextEditingController confirmPassword;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
 
   @override
   void initState() {
@@ -62,6 +64,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 31.verticalSpace,
                 CustomTextFrom(
+                  validator: (s) {
+                  final bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(s ?? "");
+
+                  if (s?.isEmpty ?? true) {
+                    return "Please enter  email";
+                  } else if (!emailValid) {
+                    return "Email format not correct";
+                  }
+                  return null;
+                },
                   controller: email,
                   hintext: '',
                   label: 'E-mail',
@@ -69,6 +83,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 16.verticalSpace,
                 CustomTextFrom(
+                  validator: (s) {
+                  if (s?.isEmpty ?? true) {
+                    return "Please enter password";
+                  }
+                  return null;
+                },
                   controller: password,
                   hintext: '',
                   label: 'Password',
@@ -76,6 +96,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 16.verticalSpace,
                 CustomTextFrom(
+                  validator: (s) {
+                  if (s?.isEmpty ?? true) {
+                    return "Password Confirmation toliqmas";
+                  } else if (password.text != s) {
+                    return "Password Confirmation bir xil emas";
+                  }
+                  return null;
+                },
                   controller: confirmPassword,
                   hintext: '',
                   label: 'Confirm Password',

@@ -3,7 +3,7 @@ import 'package:flutter_overboard/flutter_overboard.dart';
 
 
 import '../../style/style.dart';
-import 'register_1.dart';
+import 'register_page.dart';
 
 
 class OnBoarding extends StatefulWidget {

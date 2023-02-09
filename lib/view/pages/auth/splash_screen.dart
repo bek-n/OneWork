@@ -30,7 +30,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   checkToken() async {
-    if (await LocalStore.getAccessToken() == null) {
+    if (await LocalStore.getAccessToken() == null ||
+        await LocalStore.getAccessToken() == "") {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (_) => const OnBoarding()),
           (route) => false);
