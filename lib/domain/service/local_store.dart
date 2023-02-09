@@ -32,4 +32,9 @@ abstract class LocalStore {
     SharedPreferences local = await SharedPreferences.getInstance();
     return local.getString("RefreshToken");
   }
+
+  static clearAll() async {
+    SharedPreferences local = await SharedPreferences.getInstance();
+    local.clear();
+  }
 }
