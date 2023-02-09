@@ -3,7 +3,6 @@ import '../interface/auth_facade.dart';
 import '../repository/auth_repo.dart';
 import 'local_store.dart';
 
-
 class DioService {
   final AuthFacade auth = AuthRepo();
 
@@ -22,7 +21,7 @@ class DioService {
       ..interceptors.add(InterceptorsWrapper(onError: (error, event) async {
         if (error.response?.statusCode == 401) {
           var res = await auth.refreshToken();
-            LocalStore.setAccessToken(res!.token);
+          LocalStore.setAccessToken(res!.token);
           event.resolve(error.response!);
         }
       }));

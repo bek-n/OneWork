@@ -7,7 +7,7 @@ class FeaturedJobs extends StatefulWidget {
   final int index;
   final String imageLogoCompany;
   final String textPosition;
-  final String CompanyName;
+  final String companyName;
   final String wrap1;
   final String wrap2;
   final String wrap3;
@@ -18,7 +18,7 @@ class FeaturedJobs extends StatefulWidget {
       {super.key,
       required this.index,
       required this.imageLogoCompany,
-      required this.CompanyName,
+      required this.companyName,
       required this.textPosition, required this.wrap1, required this.wrap2, required this.wrap3, required this.salary, required this.textlocation});
 
   @override
@@ -71,7 +71,7 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                                 textColor: Style.whiteColor),
                           ),
                           Text(
-                            widget.CompanyName,
+                            widget.companyName,
                             style: Style.textStyleRegular2(
                                 size: 14, textColor: Style.whiteColor),
                           ),
@@ -159,6 +159,6 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
             ],
           ),
         ));
-    ;
+    
   }
 }

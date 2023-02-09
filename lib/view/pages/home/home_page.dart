@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
@@ -21,9 +20,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+     homeController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AuthController>().getUser();
-      homeController = TextEditingController();
+     
     });
     super.initState();
   }
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.info_outlined),
+                    const Icon(Icons.info_outlined),
                     16.horizontalSpace,
                     Text(
                       'Personal Info',
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.list_alt),
+                    const Icon(Icons.list_alt),
                     16.horizontalSpace,
                     Text(
                       'Applications',
@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.insert_drive_file_outlined),
+                    const Icon(Icons.insert_drive_file_outlined),
                     16.horizontalSpace,
                     Text(
                       'Resumes',
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.work_outline),
+                    const Icon(Icons.work_outline),
                     16.horizontalSpace,
                     Text(
                       'Portfolio',
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.settings),
+                    const Icon(Icons.settings),
                     16.horizontalSpace,
                     Text(
                       'Settings',
@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.logout,
                       color: Colors.red,
                     ),
@@ -206,10 +206,10 @@ class _HomePageState extends State<HomePage> {
                       width: 280.w,
                       height: 48.h,
                       child: CustomTextFrom(
-                        fillColor: Color(0xffF2F2F3),
+                        fillColor: const Color(0xffF2F2F3),
                         filled: true,
                         controller: homeController,
-                        suffixicon: Icon(Icons.search),
+                        suffixicon: const Icon(Icons.search),
                         label: 'Search a job or position',
                         hintext: '',
                         isObscure: false,
@@ -268,7 +268,7 @@ class _HomePageState extends State<HomePage> {
                         index: index,
                         imageLogoCompany:
                             'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png',
-                        CompanyName: 'Facebook',
+                        companyName: 'Facebook',
                         salary: '\$180,00/year',
                         textPosition: 'Software Engineer',
                         textlocation: 'California, USA',
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.only(right: 24),
                         child: Container(
-                            margin: EdgeInsets.only(bottom: 17),
+                            margin: const EdgeInsets.only(bottom: 17),
                             width: 280.w,
                             height: 74.h,
                             decoration: BoxDecoration(
