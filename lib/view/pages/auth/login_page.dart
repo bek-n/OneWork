@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:one_work/view/pages/auth/Register_1.dart';
 
 import '../../util/widgets/custom_textfromfiled.dart';
 import '../../util/widgets/google_facebook.dart';
@@ -104,11 +105,11 @@ class _LoginPageState extends State<LoginPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                  width: 98,
+              SizedBox(
+                  width: 98.w,
                   child: Divider(
                     thickness: 2,
-                    height: 50,
+                    height: 50.h,
                   )),
               16.horizontalSpace,
               const Text(
@@ -116,11 +117,11 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(color: Color(0xffBDBEC2)),
               ),
               16.horizontalSpace,
-              const SizedBox(
-                  width: 98,
+              SizedBox(
+                  width: 98.w,
                   child: Divider(
                     thickness: 2,
-                    height: 50,
+                    height: 50.h,
                   )),
             ],
           ),
@@ -130,14 +131,18 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             width: 350,
             height: 20,
-            child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  RichText(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => const RegisterPage(),
+                      ),
+                    );
+                  },
+                  child: RichText(
                     text: const TextSpan(
                       text: 'Have an account? ',
                       style: TextStyle(color: Color(0xffBDBEC2)),
@@ -148,8 +153,8 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           )
         ],
