@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               darkTheme: ThemeData(
-                primaryColor: Style.navBgcolorOfApp,
+                primaryColor: Style.darkBgcolorOfApp,
                 bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                     backgroundColor: Style.navBgcolorOfApp),
                 textTheme: TextTheme(

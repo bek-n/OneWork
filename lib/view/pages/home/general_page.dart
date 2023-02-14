@@ -28,9 +28,12 @@ class _GeneralPageState extends State<GeneralPage> {
         index: context.watch<AuthController>().currentIndex,
         children: mainPages,
       ),
+      backgroundColor:
+          Theme.of(context).bottomNavigationBarTheme.backgroundColor,
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: SnakeNavigationBar.color(
-        selectedItemColor: Style.primaryColor,
+        snakeViewColor: Style.primaryColor,
+        // selectedItemColor: Style.primaryColor,
         unselectedItemColor: Style.greyColor90,
         currentIndex: context.watch<AuthController>().currentIndex,
         onTap: (value) {
