@@ -46,12 +46,6 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 23),
                   child: Text(
@@ -77,17 +71,18 @@ class _LoginPageState extends State<LoginPage> {
           ),
           47.verticalSpace,
           Form(
-              key: formKey,
+            key: formKey,
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: CustomTextFrom(
                     validator: (s) {
                       final bool emailValid = RegExp(
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(s ?? "");
-          
+
                       if (s?.isEmpty ?? true) {
                         return "Please enter  email";
                       } else if (!emailValid) {
@@ -101,19 +96,20 @@ class _LoginPageState extends State<LoginPage> {
                     isObscure: false,
                   ),
                 ),
-                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: CustomTextFrom(
                     controller: password,
                     hintext: '',
                     label: 'Password',
                     isObscure: true,
-                     validator: (s) {
-                        if (s?.isEmpty ?? true) {
-                          return"Please enter password";
-                        }
-                        return null;
-                      },
+                    validator: (s) {
+                      if (s?.isEmpty ?? true) {
+                        return "Please enter password";
+                      }
+                      return null;
+                    },
                   ),
                 ),
               ],
@@ -124,14 +120,17 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: GestureDetector(
                 onTap: () {
-                 if (formKey.currentState?.validate() ?? false) {
+                  if (formKey.currentState?.validate() ?? false) {
                     context.read<AuthController>().login(
-                          email: email.text,
-                          password: password.text,
-                          onSuccess: () {
-                             Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_)=>const HomePage()), (route) => false);
-                          });
-                    }
+                        email: email.text,
+                        password: password.text,
+                        onSuccess: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const HomePage()),
+                              (route) => false);
+                        });
+                  }
                 },
                 child: const AuthButton(text: 'Log in')),
           ),
