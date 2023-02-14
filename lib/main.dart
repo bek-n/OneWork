@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_work/view/pages/auth/splash_screen.dart';
-import 'package:one_work/view/pages/home/home_page.dart';
+import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
-
 import 'controller/auth_controller.dart';
 
 void main() {
@@ -57,7 +55,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               darkTheme: ThemeData(
-                  primaryColor: Style.navBgcolorOfApp,
+                primaryColor: Style.navBgcolorOfApp,
                 bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                     backgroundColor: Style.navBgcolorOfApp),
                 textTheme: TextTheme(
@@ -85,7 +83,7 @@ class MyApp extends StatelessWidget {
                 ),
                 scaffoldBackgroundColor: Style.darkBgcolorOfApp,
               ),
-              home: const HomePage(),
+              home: const GeneralPage(),
             ),
           );
         });

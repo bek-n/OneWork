@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:one_work/view/pages/home/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../controller/auth_controller.dart';
 import '../../style/style.dart';
+import '../home/general_page.dart';
 
 class VerifyPage extends StatefulWidget {
   final String? email;
@@ -107,7 +107,7 @@ class _VerifyPageState extends State<VerifyPage> {
                       email: widget.email ?? '',
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (_) => const HomePage()),
+                            MaterialPageRoute(builder: (_) => const GeneralPage()),
                             (route) => false);
                       });
                 },

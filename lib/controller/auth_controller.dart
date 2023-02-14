@@ -14,6 +14,12 @@ class AuthController extends ChangeNotifier {
   String email = '';
   final AuthFacade authRepo = AuthRepo();
   ProfileModel? profile = ProfileModel();
+  int currentIndex = 0;
+
+  setIndex(int index) {
+    currentIndex = index;
+    notifyListeners();
+  }
 
   signUp({
     required String email,

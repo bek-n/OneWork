@@ -1,12 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:one_work/view/pages/home/home_page.dart';
-
 import '../../../domen/service/local_store.dart';
 import '../../style/style.dart';
+import '../home/general_page.dart';
 import 'onboarding_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -39,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
           (route) => false);
     } else {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (_) => const HomePage()),
+          MaterialPageRoute(builder: (_) => const GeneralPage()),
           (route) => false);
     }
   }

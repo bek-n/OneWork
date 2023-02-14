@@ -126,6 +126,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.6.1"
+  flutter_snake_navigationbar:
+    dependency: "direct main"
+    description:
+      name: flutter_snake_navigationbar
+      sha256: b78bd6389f95d595922704a3e9d1c5d94283eca8e7c02032c157b2d8e96ba083
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.1"
   flutter_svg:
     dependency: transitive
     description:
@@ -368,6 +376,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  proste_indexed_stack:
+    dependency: "direct main"
+    description:
+      name: proste_indexed_stack
+      sha256: "12ea6665d12be110afe0ee13232b5f612ff76c6c465296cc53cba3790548bcf8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.4"
   provider:
     dependency: "direct main"
     description:
