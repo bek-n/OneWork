@@ -39,7 +39,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Column(
@@ -62,11 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ]),
           7.verticalSpace,
-          const Padding(
-            padding: EdgeInsets.only(left: 23),
+          Padding(
+            padding: const EdgeInsets.only(left: 23),
             child: Text(
               'Let’s Register. Apply to jobs!',
-              style: TextStyle(color: Color(0xff0D0D26)),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           47.verticalSpace,

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,8 +10,10 @@ import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../main.dart';
+import '../../components/drawer_column.dart';
 import '../../components/home_page_featured_jobs.dart';
 import '../../../domen/service/local_store.dart';
+import '../../components/popular_jobs_home.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -78,140 +82,19 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/2.png',
-                height: 104,
-                width: 104,
-              ),
-              12.verticalSpace,
-              // Text(context.watch<AuthController>().email),
-              Text(
-                state.email,
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
-              Text(
-                'Job Position',
-                style:
-                    Style.textStyleRegular2(size: 13, textColor: Colors.grey),
-              ),
-              Text(
-                'View Profile',
-                style: Style.textStyleRegular2(
-                    size: 14, textColor: Style.primaryColor),
-              ),
-              40.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(Icons.info_outlined, color: Style.primaryColor),
-                    16.horizontalSpace,
-                    Text(
-                      'Personal Info',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    )
-                  ],
-                ),
-              ),
-              28.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(Icons.list_alt, color: Style.primaryColor),
-                    16.horizontalSpace,
-                    Text(
-                      'Applications',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    )
-                  ],
-                ),
-              ),
-              79.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(Icons.insert_drive_file_outlined,
-                        color: Style.primaryColor),
-                    16.horizontalSpace,
-                    Text(
-                      'Resumes',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    )
-                  ],
-                ),
-              ),
-              28.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(Icons.work_outline, color: Style.primaryColor),
-                    16.horizontalSpace,
-                    Text(
-                      'Portfolio',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    )
-                  ],
-                ),
-              ),
-              79.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(Icons.settings, color: Style.primaryColor),
-                    16.horizontalSpace,
-                    Text(
-                      'Settings',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    )
-                  ],
-                ),
-              ),
-              28.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.logout,
-                      color: Colors.red,
-                    ),
-                    16.horizontalSpace,
-                    GestureDetector(
-                      onTap: () {
-                        context.read<AuthController>().logOut();
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (_) => const RegisterPage()),
-                            (route) => false);
-                      },
-                      child: Text('Logout',
-                          style: Style.textStyleRegular2(
-                              size: 17, textColor: Colors.red)),
-                    )
-                  ],
-                ),
-              ),
-              25.verticalSpace,
-              DayNightSwitcher(
-                isDarkModeEnabled: !isChangedTheme,
-                onStateChanged: (isDarkModeEnabled) {
-                  isChangedTheme = !isChangedTheme;
-                  MyApp.of(context)!.change();
-                  LocalStore.setTheme(isChangedTheme);
-                  setState(() {});
-                },
-              ),
-            ],
+            child: DrawerColumn(
+          image: 'assets/images/2.png',
+          name: state.email,
+          switcher: DayNightSwitcher(
+            isDarkModeEnabled: !isChangedTheme,
+            onStateChanged: (isDarkModeEnabled) {
+              isChangedTheme = !isChangedTheme;
+              MyApp.of(context)!.change();
+              LocalStore.setTheme(isChangedTheme);
+              setState(() {});
+            },
           ),
-        ),
+        )),
       ),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -333,73 +216,14 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 24),
-                        child: Container(
-                            margin: const EdgeInsets.only(bottom: 17),
-                            width: 280.w,
-                            height: 74.h,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 16),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  25.horizontalSpace,
-                                  Image.network(
-                                    'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
-                                    height: 45,
-                                    width: 45,
-                                  ),
-                                  16.horizontalSpace,
-                                  Column(
-                                    children: [
-                                      Text(
-                                        'Jr Executive',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall,
-                                      ),
-                                      4.verticalSpace,
-                                      Text(
-                                        'Burger King',
-                                        style: Style.textStyleRegular(
-                                          size: 13,
-                                          textColor: Style.greyColor90,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  Spacer(),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 24),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          '\$96,000/y',
-                                          softWrap: false,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall,
-                                        ),
-                                        Text(
-                                          'Los Angels, US',
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
-                                          style: Style.textStyleRegular(
-                                            size: 13,
-                                            textColor: Style.greyColor90,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                        child: PopularJobs(
+                          image:
+                              'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
+                          location: 'Los Angels, US',
+                          price: '\$96,000/y',
+                          text: 'Jr Executive',
+                          title: 'Burger King',
+                        ),
                       );
                     },
                   ),

@@ -67,10 +67,13 @@ class _VerifyPageState extends State<VerifyPage> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             17.verticalSpace,
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 32),
               child: Text(
-                  'Enter your verification code from your email that we’ve sent'),
+                'Enter your verification code from your email that we’ve sent',
+                style: Style.textStyleRegular2(
+                    size: 14, textColor: Style.greyColor90),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(32.0),
@@ -107,7 +110,8 @@ class _VerifyPageState extends State<VerifyPage> {
                       email: widget.email ?? '',
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (_) => const GeneralPage()),
+                            MaterialPageRoute(
+                                builder: (_) => const GeneralPage()),
                             (route) => false);
                       });
                 },

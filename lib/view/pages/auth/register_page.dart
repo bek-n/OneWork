@@ -60,9 +60,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text('Registration 👍',
                       style: Theme.of(context).textTheme.titleMedium),
                   7.verticalSpace,
-                  const Text(
+                  Text(
                     'Let’s Register. Apply to jobs!',
-                    style: TextStyle(color: Color(0xff0D0D26)),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   31.verticalSpace,
                   CustomTextFrom(
