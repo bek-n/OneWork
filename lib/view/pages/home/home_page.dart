@@ -7,6 +7,7 @@ import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../domen/components/home_page_featured_jobs.dart';
+import '../../domen/service/local_store.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,8 +22,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
      homeController = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       context.read<AuthController>().getUser(context);
+        var refreshToken = await LocalStore.getRefreshToken();
+      print("refreshToken : $refreshToken");
      
     });
     super.initState();

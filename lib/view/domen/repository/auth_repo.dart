@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:one_work/view/domen/model/edit_user_model.dart';
-import 'package:one_work/view/pages/auth/login_page.dart';
+import 'package:one_work/view/pages/auth/register_page.dart';
 import '../interface/auth_facade.dart';
 import '../model/application_model.dart';
+import '../model/edit_user_model.dart';
 import '../model/profile_model.dart';
 import '../model/token_model.dart';
 import '../service/dio_service.dart';
 import '../service/local_store.dart';
-
 
 class AuthRepo implements AuthFacade {
   DioService dio = DioService();
@@ -75,7 +74,7 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-   @override
+  @override
   Future<ProfileModel?> getUser(BuildContext context) async {
     try {
       final token = await LocalStore.getAccessToken();
@@ -115,12 +114,32 @@ class AuthRepo implements AuthFacade {
         LocalStore.clearAll();
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (_) => const LoginPage()),
+            MaterialPageRoute(builder: (_) => const RegisterPage()),
             (route) => false);
       }
       debugPrint("Get Profile Error : $e");
       return null;
     }
+  }
+
+  @override
+  Future editUser(BuildContext context, EditUserModel newUser) async {
+    try {
+      final token = await LocalStore.getAccessToken();
+      var res = await dio
+          .client(token: token)
+          .put("/applicants/${newUser.id}", data: newUser.toJson());
+      return null;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        var res = await refreshToken(context);
+        if (res != null) {
+          // ignore: use_build_context_synchronously
+          await editUser(context, newUser);
+        }
+      }
+    }
+    return null;
   }
 
   @override
@@ -138,26 +157,6 @@ class AuthRepo implements AuthFacade {
         if (res != null) {
           // ignore: use_build_context_synchronously
           await getApplication(context, userId);
-        }
-      }
-    }
-    return null;
-  }
-
-  @override
-  Future editUser(BuildContext context, EditUserModel newUser) async {
-    try {
-      final token = await LocalStore.getAccessToken();
-      var res = await dio
-          .client(token: token)
-          .put("/applicants/${newUser.id}", data: newUser.toJson());
-      return null;
-    } on DioError catch (e) {
-      if (e.response?.statusCode == 401) {
-        var res = await refreshToken(context);
-        if (res != null) {
-          // ignore: use_build_context_synchronously
-          await editUser(context, newUser);
         }
       }
     }
