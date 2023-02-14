@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
-import '../../../domen/components/auth_button.dart';
+import '../../components/auth_button.dart';
 import '../../components/custom_textfromfiled.dart';
 import '../../components/google_facebook.dart';
 import '../../style/style.dart';
