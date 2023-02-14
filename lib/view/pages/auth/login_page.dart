@@ -27,12 +27,6 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 23),
                   child: Text(
@@ -90,8 +84,12 @@ class _LoginPageState extends State<LoginPage> {
           30.verticalSpace,
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const ForgetPassword()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const ForgetPassword(),
+                  ),
+                );
               },
               child: const Center(
                 child: Text(
