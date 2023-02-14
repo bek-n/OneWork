@@ -5,7 +5,6 @@ import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
-
 import '../../domen/components/home_page_featured_jobs.dart';
 import '../../domen/service/local_store.dart';
 

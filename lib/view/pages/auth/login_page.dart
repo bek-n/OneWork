@@ -178,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             width: 350,
             height: 20,
-            child: InkWell(
+            child: GestureDetector(
               onTap: () {
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (_) => const RegisterPage()),

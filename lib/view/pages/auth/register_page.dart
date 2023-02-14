@@ -48,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Form(
-               key: formKey,
+              key: formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -71,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       final bool emailValid = RegExp(
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(s ?? "");
-            
+
                       if (s?.isEmpty ?? true) {
                         return "Please enter  email";
                       } else if (!emailValid) {
@@ -113,7 +113,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     isObscure: true,
                   ),
                   context.watch<AuthController>().wrongPassword != null
-                      ? Text(context.watch<AuthController>().wrongPassword ?? "")
+                      ? Text(
+                          context.watch<AuthController>().wrongPassword ?? "")
                       : SizedBox.shrink(),
                   32.verticalSpace,
                   Center(
@@ -161,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   32.verticalSpace,
                   const GoogleFacebook(),
                   32.verticalSpace,
-                  InkWell(
+                  GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(builder: (_) => const LoginPage()),
