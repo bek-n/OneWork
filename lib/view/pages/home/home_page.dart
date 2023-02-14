@@ -20,12 +20,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-     homeController = TextEditingController();
+    homeController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       context.read<AuthController>().getUser(context);
-        var refreshToken = await LocalStore.getRefreshToken();
+      var refreshToken = await LocalStore.getRefreshToken();
       print("refreshToken : $refreshToken");
-     
     });
     super.initState();
   }
@@ -332,10 +331,53 @@ class _HomePageState extends State<HomePage> {
                                     width: 45,
                                   ),
                                   16.horizontalSpace,
-                                  Text(
-                                    'Jr Executive',
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall,
+                                  Column(
+                                    children: [
+                                      Text(
+                                        'Jr Executive',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall,
+                                      ),
+                                      4.verticalSpace,
+                                      Text(
+                                        'Burger King',
+                                        style: Style.textStyleRegular(
+                                          size: 13,
+                                          textColor: Style.greyColor90,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 24),
+                                    child: Expanded(
+                                      child: Container(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              '\$96,000/y',
+                                              softWrap: false,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall,
+                                            ),
+                                            Text(
+                                              'Los Angels, US',
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: Style.textStyleRegular(
+                                                size: 13,
+                                                textColor: Style.greyColor90,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
