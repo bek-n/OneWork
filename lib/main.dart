@@ -4,13 +4,39 @@ import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import 'controller/auth_controller.dart';
+import 'domen/service/local_store.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+  static _MyAppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isChangeTheme = true;
+  @override
+  void initState() {
+    getTheme();
+    super.initState();
+  }
+
+  getTheme() async {
+    isChangeTheme = await LocalStore.getTheme();
+
+    setState(() {});
+  }
+
+  void change() {
+    isChangeTheme = !isChangeTheme;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +52,7 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'OneWork',
+              themeMode: isChangeTheme ? ThemeMode.light : ThemeMode.dark,
               theme: ThemeData(
                 primaryColor: Style.whiteColor,
                 useMaterial3: true,

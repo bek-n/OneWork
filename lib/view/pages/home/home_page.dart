@@ -1,10 +1,13 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/components/custom_textfromfiled.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
+import '../../../main.dart';
 import '../../components/home_page_featured_jobs.dart';
 import '../../../domen/service/local_store.dart';
 
@@ -17,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late TextEditingController homeController;
+  bool isChangedTheme = true;
 
   @override
   void initState() {
@@ -24,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       context.read<AuthController>().getUser(context);
       var refreshToken = await LocalStore.getRefreshToken();
+      getInfo();
       print("refreshToken : $refreshToken");
     });
     super.initState();
@@ -33,6 +38,11 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     homeController.dispose();
     super.dispose();
+  }
+
+  getInfo() async {
+    isChangedTheme = await LocalStore.getTheme();
+    setState(() {});
   }
 
   @override
@@ -186,6 +196,16 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
+              ),
+              25.verticalSpace,
+              DayNightSwitcher(
+                isDarkModeEnabled: !isChangedTheme,
+                onStateChanged: (isDarkModeEnabled) {
+                  isChangedTheme = !isChangedTheme;
+                  MyApp.of(context)!.change();
+                  LocalStore.setTheme(isChangedTheme);
+                  setState(() {});
+                },
               ),
             ],
           ),

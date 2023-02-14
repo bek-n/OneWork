@@ -58,6 +58,7 @@ class AuthController extends ChangeNotifier {
       onSuccess();
     }
   }
+
   login({
     required String email,
     required String password,
@@ -65,7 +66,7 @@ class AuthController extends ChangeNotifier {
   }) async {
     var res = await authRepo.login(email: email, password: password);
     if (res?.statusCode == 200) {
-      var login =  LoginModel.fromJson(res?.data);
+      var login = LoginModel.fromJson(res?.data);
       LocalStore.setAccessToken(login.accessToken ?? "");
       LocalStore.setRefreshToken(login.refreshToken ?? "");
       onSuccess();
