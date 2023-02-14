@@ -76,6 +76,7 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
           backgroundColor: Colors.transparent),
       drawer: Drawer(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -107,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    const Icon(Icons.info_outlined),
+                    const Icon(Icons.info_outlined, color: Style.primaryColor),
                     16.horizontalSpace,
                     Text(
                       'Personal Info',
@@ -121,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    const Icon(Icons.list_alt),
+                    const Icon(Icons.list_alt, color: Style.primaryColor),
                     16.horizontalSpace,
                     Text(
                       'Applications',
@@ -135,7 +136,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    const Icon(Icons.insert_drive_file_outlined),
+                    const Icon(Icons.insert_drive_file_outlined,
+                        color: Style.primaryColor),
                     16.horizontalSpace,
                     Text(
                       'Resumes',
@@ -149,7 +151,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    const Icon(Icons.work_outline),
+                    const Icon(Icons.work_outline, color: Style.primaryColor),
                     16.horizontalSpace,
                     Text(
                       'Portfolio',
@@ -163,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    const Icon(Icons.settings),
+                    const Icon(Icons.settings, color: Style.primaryColor),
                     16.horizontalSpace,
                     Text(
                       'Settings',

@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                     textColor: Style.whiteColor,
                   ),
                   titleMedium: Style.textStyleRegular(
-                      size: 24, textColor: const Color(0xff0D0D26)),
+                      size: 24, textColor: Style.whiteColor),
                   displayMedium: Style.textStyleRegular(
                     size: 28,
                     textColor: Style.whiteColor,

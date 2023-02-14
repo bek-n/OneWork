@@ -58,7 +58,8 @@ class CustomTextFrom extends StatelessWidget {
         prefix: perfixicon,
         // suffix: suffixicon,
         label: Text('$label'),
-        labelStyle: const TextStyle(color: Color(0xffBDBEC2)),
+        labelStyle:
+            Style.textStyleRegular2(textColor: Style.greyColor90, size: 15),
         hintText: hintext,
         contentPadding:
             const EdgeInsets.only(left: 24, right: 80, top: 12, bottom: 12),
