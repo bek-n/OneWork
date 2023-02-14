@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
+import 'package:one_work/view/domen/model/edit_user_model.dart';
+import 'package:one_work/view/pages/auth/login_page.dart';
 import '../interface/auth_facade.dart';
+import '../model/application_model.dart';
 import '../model/profile_model.dart';
 import '../model/token_model.dart';
 import '../service/dio_service.dart';
@@ -73,51 +75,92 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-  @override
-  Future<ProfileModel?> getUser() async {
+   @override
+  Future<ProfileModel?> getUser(BuildContext context) async {
     try {
       final token = await LocalStore.getAccessToken();
       var res = await dio.client(token: token).get(
             "/api/profile",
           );
       return ProfileModel.fromJson(res.data);
-    } catch (e) {
-      debugPrint("Get Profile Error : $e");
-      return null;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        var res = await refreshToken(context);
+        if (res != null) {
+          // ignore: use_build_context_synchronously
+          await getUser(context);
+        }
+      }
     }
+    return null;
   }
 
   @override
-  Future<TokenModel?> refreshToken() async {
+  Future<TokenModel?> refreshToken(BuildContext context) async {
     try {
       final refreshToken = await LocalStore.getRefreshToken();
+      print("refreshToken: $refreshToken");
       var res = await dio.client().post(
-        " token/refresh",
+        "/token/refresh",
         data: {
           "refresh_token": refreshToken,
         },
       );
-      return TokenModel.fromJson(res.data);
-    } catch (e) {
+
+      var tokenModel = TokenModel.fromJson(res.data);
+      await LocalStore.setAccessToken(tokenModel.token);
+      return tokenModel;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 404) {
+        LocalStore.clearAll();
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (_) => const LoginPage()),
+            (route) => false);
+      }
       debugPrint("Get Profile Error : $e");
       return null;
     }
   }
 
   @override
-  Future getApplication() async {
+  Future<ApplicationModel?> getApplication(
+      BuildContext context, int userId) async {
     try {
       final token = await LocalStore.getAccessToken();
       var res = await dio.client(token: token).get(
-        "/applications",
-        queryParameters: {
-          'id': 0
+            "/applicants/4",
+          );
+      return ApplicationModel.fromJson(res.data);
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        var res = await refreshToken(context);
+        if (res != null) {
+          // ignore: use_build_context_synchronously
+          await getApplication(context, userId);
         }
-      );
-      return ProfileModel.fromJson(res.data);
-    } catch (e) {
-      debugPrint("Get Profile Error : $e");
-      return null;
+      }
     }
+    return null;
+  }
+
+  @override
+  Future editUser(BuildContext context, EditUserModel newUser) async {
+    try {
+      final token = await LocalStore.getAccessToken();
+      var res = await dio
+          .client(token: token)
+          .put("/applicants/${newUser.id}", data: newUser.toJson());
+      return null;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        var res = await refreshToken(context);
+        if (res != null) {
+          // ignore: use_build_context_synchronously
+          await editUser(context, newUser);
+        }
+      }
+    }
+    return null;
   }
 }

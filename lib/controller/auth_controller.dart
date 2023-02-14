@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../view/domen/interface/auth_facade.dart';
+import '../view/domen/model/edit_user_model.dart';
 import '../view/domen/model/login_model.dart';
 import '../view/domen/model/profile_model.dart';
 import '../view/domen/repository/auth_repo.dart';
@@ -70,16 +71,32 @@ class AuthController extends ChangeNotifier {
     authRepo.logout();
   }
 
-  getUser() async {
+  getUser(BuildContext context) async {
     isLoading = true;
     notifyListeners();
-    profile = await authRepo.getUser();
+    profile = await authRepo.getUser(context);
+    isLoading = false;
+    notifyListeners();
+  }
+
+  editUser(BuildContext context, EditUserModel newUser) async {
+    isLoading = true;
+    notifyListeners();
+    profile = await authRepo.editUser(context, newUser);
     isLoading = false;
     notifyListeners();
   }
 
   onChange() {
     isVisibility = !isVisibility;
+    notifyListeners();
+  }
+
+  getApplication(BuildContext context, int userId) async {
+    isLoading = true;
+    notifyListeners();
+    var applicationModel = await authRepo.getApplication(context, userId);
+    isLoading = false;
     notifyListeners();
   }
 }
