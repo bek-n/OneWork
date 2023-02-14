@@ -95,7 +95,7 @@ class AuthController extends ChangeNotifier {
   getApplication(BuildContext context, int userId) async {
     isLoading = true;
     notifyListeners();
-    var applicationModel = await authRepo.getApplication(context, userId);
+    await authRepo.getApplication(context, userId);
     isLoading = false;
     notifyListeners();
   }

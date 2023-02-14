@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
               12.verticalSpace,
               // Text(context.watch<AuthController>().email),
               Text(
-                'someone email',
+                state.email,
                 style: Theme.of(context).textTheme.displaySmall,
               ),
               Text(

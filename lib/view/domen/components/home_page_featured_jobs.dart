@@ -59,6 +59,7 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                   ),
                   16.horizontalSpace,
                   Expanded(
+                    // ignore: avoid_unnecessary_containers
                     child: Container(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

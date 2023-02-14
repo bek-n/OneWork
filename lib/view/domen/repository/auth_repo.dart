@@ -126,7 +126,7 @@ class AuthRepo implements AuthFacade {
   Future editUser(BuildContext context, EditUserModel newUser) async {
     try {
       final token = await LocalStore.getAccessToken();
-      var res = await dio
+      await dio
           .client(token: token)
           .put("/applicants/${newUser.id}", data: newUser.toJson());
       return null;
