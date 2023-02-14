@@ -107,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           });
                     },
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: Container(
                         height: 56.h,
                         decoration: BoxDecoration(
