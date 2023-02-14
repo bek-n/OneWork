@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_work/controller/auth_controller.dart';
-import 'package:one_work/view/domen/components/custom_textfromfiled.dart';
+import 'package:one_work/view/components/custom_textfromfiled.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
-import '../../domen/components/home_page_featured_jobs.dart';
-import '../../domen/service/local_store.dart';
+import '../../components/home_page_featured_jobs.dart';
+import '../../../domen/service/local_store.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -352,31 +352,27 @@ class _HomePageState extends State<HomePage> {
                                   Spacer(),
                                   Padding(
                                     padding: const EdgeInsets.only(right: 24),
-                                    child: Expanded(
-                                      child: Container(
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              '\$96,000/y',
-                                              softWrap: false,
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleSmall,
-                                            ),
-                                            Text(
-                                              'Los Angels, US',
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                              style: Style.textStyleRegular(
-                                                size: 13,
-                                                textColor: Style.greyColor90,
-                                              ),
-                                            )
-                                          ],
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '\$96,000/y',
+                                          softWrap: false,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall,
                                         ),
-                                      ),
+                                        Text(
+                                          'Los Angels, US',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: Style.textStyleRegular(
+                                            size: 13,
+                                            textColor: Style.greyColor90,
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ],

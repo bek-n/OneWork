@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../style/style.dart';
+import '../style/style.dart';
+
+
 
 class FeaturedJobs extends StatefulWidget {
   final int index;

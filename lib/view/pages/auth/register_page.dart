@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_work/view/domen/components/auth_button.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
-import '../../domen/components/custom_textfromfiled.dart';
-import '../../domen/components/google_facebook.dart';
+import '../../../domen/components/auth_button.dart';
+import '../../components/custom_textfromfiled.dart';
+import '../../components/google_facebook.dart';
 import '../../style/style.dart';
 import 'confirm_page.dart';
 import 'login_page.dart';

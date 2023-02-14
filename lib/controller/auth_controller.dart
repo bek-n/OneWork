@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-import '../view/domen/interface/auth_facade.dart';
-import '../view/domen/model/edit_user_model.dart';
-import '../view/domen/model/login_model.dart';
-import '../view/domen/model/profile_model.dart';
-import '../view/domen/repository/auth_repo.dart';
-import '../view/domen/service/local_store.dart';
+import '../domen/interface/auth_facade.dart';
+import '../domen/model/edit_user_model.dart';
+import '../domen/model/login_model.dart';
+import '../domen/model/profile_model.dart';
+import '../domen/repository/auth_repo.dart';
+import '../domen/service/local_store.dart';
 
 class AuthController extends ChangeNotifier {
   String? wrongPassword;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_work/view/domen/components/auth_button.dart';
-import '../../domen/components/custom_textfromfiled.dart';
+import '../../../domen/components/auth_button.dart';
+import '../../components/custom_textfromfiled.dart';
 import '../../style/style.dart';
 
 
