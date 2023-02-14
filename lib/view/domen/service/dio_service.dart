@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:dio/dio.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import '../interface/auth_facade.dart';
 import '../repository/auth_repo.dart';
 import 'local_store.dart';
@@ -20,7 +23,7 @@ class DioService {
           responseHeader: false))
       ..interceptors.add(InterceptorsWrapper(onError: (error, event) async {
         if (error.response?.statusCode == 401) {
-          var res = await auth.refreshToken();
+          var res = await auth.refreshToken(context as BuildContext);
           LocalStore.setAccessToken(res!.token);
           event.resolve(error.response!);
         }

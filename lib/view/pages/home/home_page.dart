@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
      homeController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AuthController>().getUser();
+      context.read<AuthController>().getUser(context);
      
     });
     super.initState();
