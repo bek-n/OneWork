@@ -161,6 +161,14 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
+  createUser(BuildContext context, EditUserModel newUser) async {
+    isLoading = true;
+    notifyListeners();
+    profile = await authRepo.createUser(context, newUser);
+    isLoading = false;
+    notifyListeners();
+  }
+
   onChange() {
     isVisibility = !isVisibility;
     notifyListeners();

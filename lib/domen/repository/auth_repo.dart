@@ -165,4 +165,24 @@ class AuthRepo implements AuthFacade {
       return null;
     }
   }
+  
+  @override
+  Future createUser(BuildContext context, EditUserModel newUser) async {
+    try {
+      final token = await LocalStore.getAccessToken();
+      await dio
+          .client(token: token)
+          .post("/applicants", data: newUser.toJson());
+      return null;
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        var res = await refreshToken(context);
+        if (res != null) {
+          // ignore: use_build_context_synchronously
+          await createUser(context, newUser);
+        }
+      }
+    }
+    return null;
+  }
 }

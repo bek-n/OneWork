@@ -25,4 +25,5 @@ abstract class AuthFacade {
   Future<ApplicationModel?> getApplication(BuildContext context, int userId);
 
   Future editUser(BuildContext context, EditUserModel newUser);
+  Future createUser(BuildContext context, EditUserModel newUser);
 }
