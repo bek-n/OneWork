@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import '../interface/auth_facade.dart';
 import '../model/application_model.dart';
@@ -27,23 +28,7 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-  @override
-  Future<TokenModel?> verifyEmail(
-      {required String email, required String code}) async {
-    try {
-      var res = await dio.client().post(
-        "/auth/verify",
-        data: {
-          "email": email,
-          "code": code,
-        },
-      );
-      return TokenModel.fromJson(res.data);
-    } catch (e) {
-      debugPrint("Verify Error : $e");
-      return null;
-    }
-  }
+  
 
   @override
   Future logout() async {
@@ -161,5 +146,23 @@ class AuthRepo implements AuthFacade {
       }
     }
     return null;
+  }
+  
+  @override
+  Future<TokenModel?> verifyEmail({required String email, required String code, required String fcmToken}) async {
+    try {
+      var res = await dio.client().post(
+        "/auth/verify",
+        data: {
+          "email": email,
+          "code": code,
+          "fcm_token": fcmToken
+        },
+      );
+      return TokenModel.fromJson(res.data);
+    } catch (e) {
+      debugPrint("Verify Error : $e");
+      return null;
+    }
   }
 }

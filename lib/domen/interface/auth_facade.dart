@@ -11,7 +11,7 @@ abstract class AuthFacade {
   Future<Response?> login({required String email, required String password});
 
   Future<TokenModel?> verifyEmail(
-      {required String email, required String code});
+      {required String email, required String code,required String fcmToken});
 
   Future logout();
 

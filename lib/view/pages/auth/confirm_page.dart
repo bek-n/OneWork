@@ -107,13 +107,14 @@ class _VerifyPageState extends State<VerifyPage> {
                 onPressed: () {
                   context.read<AuthController>().verifyEmail(
                       code: controller.text,
+                      fcmtoken: context.read<AuthController>().fcmtoken2,
                       email: widget.email ?? '',
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (_) => const GeneralPage()),
                             (route) => false);
-                      });
+                      }, );
                 },
                 child: context.watch<AuthController>().isLoading
                     ? Padding(

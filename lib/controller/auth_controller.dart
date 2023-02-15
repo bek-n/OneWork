@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../domen/interface/auth_facade.dart';
@@ -15,6 +16,7 @@ class AuthController extends ChangeNotifier {
   final AuthFacade authRepo = AuthRepo();
   ProfileModel? profile = ProfileModel();
   int currentIndex = 0;
+  String fcmtoken2 = '';
 
   setIndex(int index) {
     currentIndex = index;
@@ -46,11 +48,41 @@ class AuthController extends ChangeNotifier {
   verifyEmail(
       {required String code,
       required String email,
+      required String fcmtoken,
       required VoidCallback onSuccess}) async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    FirebaseMessaging.onBackgroundMessage((RemoteMessage message) async {
+      print("onBackgroundMessage");
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("onMessageOpenedApp");
+    });
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("onMessage");
+    });
+
+    final fcmtoken1 = await FirebaseMessaging.instance.getToken();
+    fcmtoken = '$fcmtoken1';
+    fcmtoken2 = fcmtoken;
+    print('fcm : $fcmtoken');
     isLoading = true;
     notifyListeners();
 
-    var res = await authRepo.verifyEmail(email: email, code: code);
+    var res = await authRepo.verifyEmail(
+        email: email, code: code, fcmToken: fcmtoken);
     if (res != null) {
       await LocalStore.setAccessToken(res.token);
       isLoading = false;
