@@ -79,7 +79,7 @@ class AuthRepo implements AuthFacade {
     try {
       final token = await LocalStore.getAccessToken();
       var res = await dio.client(token: token).get(
-            "/api/profile",
+            "/api/profile/applicant",
           );
       return ProfileModel.fromJson(res.data);
     } on DioError catch (e) {

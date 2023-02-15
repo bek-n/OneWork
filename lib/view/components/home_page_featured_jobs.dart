@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../style/style.dart';
 
-
-
 class FeaturedJobs extends StatefulWidget {
   final int index;
   final String imageLogoCompany;
@@ -21,7 +19,12 @@ class FeaturedJobs extends StatefulWidget {
       required this.index,
       required this.imageLogoCompany,
       required this.companyName,
-      required this.textPosition, required this.wrap1, required this.wrap2, required this.wrap3, required this.salary, required this.textlocation});
+      required this.textPosition,
+      required this.wrap1,
+      required this.wrap2,
+      required this.wrap3,
+      required this.salary,
+      required this.textlocation});
 
   @override
   State<FeaturedJobs> createState() => _FeaturedJobsState();
@@ -92,8 +95,6 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                     Wrap(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 4),
                           decoration: BoxDecoration(
                               color: Style.whiteColor.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(65)),
@@ -130,7 +131,7 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                               color: Style.whiteColor.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(65)),
                           child: Text(
-                             widget.wrap3,
+                            widget.wrap3,
                             style: Style.textStyleRegular2(
                                 size: 12, textColor: Style.whiteColor),
                           ),
@@ -162,6 +163,5 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
             ],
           ),
         ));
-    
   }
 }

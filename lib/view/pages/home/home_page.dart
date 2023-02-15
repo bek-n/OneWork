@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 20.verticalSpace,
                 SizedBox(
-                  height: 190.w,
+                  height: 240.w,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
