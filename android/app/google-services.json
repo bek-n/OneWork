@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "520145250456",
+    "project_id": "onework-3d001",
+    "storage_bucket": "onework-3d001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520145250456:android:9b8aab04f55043343648ed",
+        "android_client_info": {
+          "package_name": "com.example.one_work"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520145250456-mbutm7foiroqevnv5i7sccmcpg1f7s36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYwp5vAaKaz4PxgQ0lPyeNYo-qkQbE1Q0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520145250456-mbutm7foiroqevnv5i7sccmcpg1f7s36.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

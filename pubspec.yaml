@@ -50,6 +50,7 @@ dependencies:
   flutter_snake_navigationbar: ^0.6.1
   proste_indexed_stack: ^0.2.4
   day_night_switcher: ^0.2.0+1
+  firebase_messaging: ^14.2.2
  
   
  
