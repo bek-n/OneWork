@@ -74,8 +74,8 @@ class AuthController extends ChangeNotifier {
   }
 
   logOut() {
-    LocalStore.clearAll();
     authRepo.logout();
+    LocalStore.clearAll();
   }
 
   getUser(BuildContext context) async {

@@ -65,7 +65,7 @@ class AuthRepo implements AuthFacade {
     try {
       var res = await dio.client().post(
         "/auth/login",
-        data: {"email": email, "password": password, "user_type": "applicant"},
+        data: {"email": email, "password": password, },
       );
       return res;
     } catch (e) {
