@@ -1,5 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../domen/interface/auth_facade.dart';
 import '../domen/model/edit_user_model.dart';
@@ -17,6 +19,38 @@ class AuthController extends ChangeNotifier {
   ProfileModel? profile = ProfileModel();
   int currentIndex = 0;
   String fcmtoken2 = '';
+  final ImagePicker _image = ImagePicker();
+  String imagePath = "";
+
+
+   getImageCamera() {
+    _image.pickImage(source: ImageSource.camera).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  getImageGallery() {
+    _image.pickImage(source: ImageSource.gallery).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
+  }
 
   setIndex(int index) {
     currentIndex = index;

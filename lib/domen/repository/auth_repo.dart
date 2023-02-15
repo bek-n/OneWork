@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
 import '../interface/auth_facade.dart';
 import '../model/application_model.dart';
