@@ -23,49 +23,27 @@ class PopularJobs extends StatelessWidget {
           color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           borderRadius: BorderRadius.circular(24),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            25.horizontalSpace,
-            Image.network(
-              image,
-              height: 45,
-              width: 45,
-            ),
-            16.horizontalSpace,
-            Column(
-              children: [
-                Text(
-                  text,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                4.verticalSpace,
-                Text(
-                  title,
-                  style: Style.textStyleRegular(
-                    size: 13,
-                    textColor: Style.greyColor90,
-                  ),
-                )
-              ],
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 17),
-              child: Column(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              25.horizontalSpace,
+              Image.network(
+                image,
+                height: 45,
+                width: 45,
+              ),
+              16.horizontalSpace,
+              Column(
                 children: [
                   Text(
-                    price,
-                    softWrap: false,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
+                    text,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   4.verticalSpace,
                   Text(
-                    location,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
+                    title,
                     style: Style.textStyleRegular(
                       size: 13,
                       textColor: Style.greyColor90,
@@ -73,8 +51,33 @@ class PopularJobs extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-          ],
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 17),
+                child: Column(
+                  children: [
+                    Text(
+                      price,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    4.verticalSpace,
+                    Text(
+                      location,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: Style.textStyleRegular(
+                        size: 13,
+                        textColor: Style.greyColor90,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }

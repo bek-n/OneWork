@@ -152,8 +152,9 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                  width: 98,
+                  width: 70,
                   child: Divider(
+                    color: Style.greyColor90,
                     thickness: 2,
                     height: 50,
                   )),
@@ -164,8 +165,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               16.horizontalSpace,
               const SizedBox(
-                  width: 98,
+                  width: 70,
                   child: Divider(
+                    color: Style.greyColor90,
                     thickness: 2,
                     height: 50,
                   )),

@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 scaffoldBackgroundColor: Style.darkBgcolorOfApp,
               ),
-              home: const GeneralPage(),
+              home: const SplashScreen(),
             ),
           );
         });

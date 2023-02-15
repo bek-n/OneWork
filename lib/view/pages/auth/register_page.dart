@@ -139,8 +139,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                          width: 98,
+                          width: 70,
                           child: Divider(
+                            color: Style.greyColor90,
                             thickness: 2,
                             height: 50,
                           )),
@@ -151,8 +152,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       16.horizontalSpace,
                       const SizedBox(
-                          width: 98,
+                          width: 70,
                           child: Divider(
+                            color: Style.greyColor90,
                             thickness: 2,
                             height: 50,
                           )),
