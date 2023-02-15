@@ -6,6 +6,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 import '../../../controller/auth_controller.dart';
 import '../../style/style.dart';
 import '../home/general_page.dart';
+import 'fill_bio.dart';
 
 class VerifyPage extends StatefulWidget {
   final String? email;
@@ -112,7 +113,7 @@ class _VerifyPageState extends State<VerifyPage> {
                       onSuccess: () {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                                builder: (_) => const GeneralPage()),
+                                builder: (_) => const FillBioPage()),
                             (route) => false);
                       }, );
                 },

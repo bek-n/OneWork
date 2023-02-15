@@ -13,7 +13,7 @@ class UploadingPhoto extends StatefulWidget {
 }
 
 class _UploadingPhotoState extends State<UploadingPhoto> {
-   final ImagePicker _picker = ImagePicker();
+  
  
   @override
   
@@ -35,7 +35,7 @@ class _UploadingPhotoState extends State<UploadingPhoto> {
             children: [
               InkWell(
                 onTap: () async {
-               state.image  = await _picker.pickImage(source: ImageSource.camera);
+               state.image  = await state.picker.pickImage(source: ImageSource.camera);
                 print("xfile: ${state.image ?.path}");
                 },
                 child: Container(
@@ -70,7 +70,7 @@ class _UploadingPhotoState extends State<UploadingPhoto> {
             children: [
               InkWell(
                 onTap: () async {
-                 state.image  = await _picker.pickImage(source: ImageSource.gallery);
+                 state.image  = await state.picker.pickImage(source: ImageSource.gallery);
                 print("xfile: ${state.image ?.path}");
                 },
                 child: Container(

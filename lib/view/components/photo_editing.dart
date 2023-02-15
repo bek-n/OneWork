@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/auth_controller.dart';
@@ -15,6 +17,7 @@ class PhotoEditing extends StatefulWidget {
 class _PhotoEditingState extends State<PhotoEditing> {
   @override
   Widget build(BuildContext context) {
+    final state = context.watch<AuthController>();
     return Positioned(
         bottom: 0,
         right: 0,
@@ -23,42 +26,37 @@ class _PhotoEditingState extends State<PhotoEditing> {
             showCupertinoDialog(
                 context: context,
                 builder: ((context) => CupertinoAlertDialog(
-                      title: Text('Choose'),
+                      title: const Text('Choose'),
                       actions: [
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<AuthController>().getImageCamera();
+                              state.image = await state.picker
+                                  .pickImage(source: ImageSource.camera);
                             }),
-                            child: Text("Take photo")),
+                            child: const Text("Take photo")),
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<AuthController>().getImageGallery();
+                              state.image = await state.picker
+                                  .pickImage(source: ImageSource.gallery);
                             }),
-                            child: Text("From Gallery")),
-                        CupertinoButton(
-                            onPressed: (() async {
-                              context.read<AuthController>().deleteImage();
-                              Navigator.pop(context);
-                              setState(() {});
-                            }),
-                            child: Text('Delete')),
+                            child: const Text("From Gallery")),
                         CupertinoButton(
                             onPressed: (() async {
                               Navigator.pop(context);
                             }),
-                            child: Text('Cancel'))
+                            child: const Text('Cancel'))
                       ],
                     )));
           },
           child: Container(
             height: 55.h,
             width: 55.w,
-            decoration: BoxDecoration(
-              color: Color(0xffF43F5E),
+            decoration: const BoxDecoration(
+              color: Style.primaryColor,
               shape: BoxShape.circle,
             ),
             padding: EdgeInsets.all(8.r),
-            child: Icon(
+            child: const Icon(
               Icons.edit,
               color: Colors.white,
             ),

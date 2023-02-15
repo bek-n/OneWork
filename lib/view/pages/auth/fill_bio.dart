@@ -1,11 +1,11 @@
-import 'dart:html';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:one_work/domen/model/edit_user_model.dart';
+import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
@@ -327,6 +327,9 @@ class _FillBioPageState extends State<FillBioPage> {
                               country: country.text,
                               imageUrl: state.imageUrl,
                             ));
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (_) => GeneralPage()),
+                            (route) => false);
                       }
                     },
                     child: AnimatedContainer(
@@ -347,13 +350,16 @@ class _FillBioPageState extends State<FillBioPage> {
                             const BorderRadius.all(Radius.circular(32)),
                       ),
                       child: Center(
-                        child: Text(
-                          'Next',
-                          style: GoogleFonts.sourceSansPro(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
+                        child: state.isLoading
+                            ? LoadingAnimationWidget.fallingDot(
+                                color: Style.whiteColor, size: 35)
+                            : Text(
+                                'Next',
+                                style: GoogleFonts.sourceSansPro(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
                       ),
                     ),
                   ),

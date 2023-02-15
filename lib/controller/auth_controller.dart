@@ -21,6 +21,7 @@ class AuthController extends ChangeNotifier {
   String fcmtoken2 = '';
   String? imageUrl;
   late XFile? image;
+   final ImagePicker picker = ImagePicker();
 
   setIndex(int index) {
     currentIndex = index;
