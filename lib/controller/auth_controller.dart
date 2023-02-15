@@ -96,7 +96,7 @@ class AuthController extends ChangeNotifier {
     required String password,
     required VoidCallback onSuccess,
   }) async {
-    var res = await authRepo.login(email: email, password: password);
+    var res = await authRepo.login(email: email, password: password, fcmToken: fcmtoken2);
     if (res?.statusCode == 200) {
       var login = LoginModel.fromJson(res?.data);
       LocalStore.setAccessToken(login.accessToken ?? "");

@@ -44,20 +44,7 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-  @override
-  Future<Response?> login(
-      {required String email, required String password}) async {
-    try {
-      var res = await dio.client().post(
-        "/auth/login",
-        data: {"email": email, "password": password, },
-      );
-      return res;
-    } catch (e) {
-      debugPrint("Login Error : $e");
-      return null;
-    }
-  }
+  
 
   @override
   Future<ProfileModel?> getUser(BuildContext context) async {
@@ -162,6 +149,20 @@ class AuthRepo implements AuthFacade {
       return TokenModel.fromJson(res.data);
     } catch (e) {
       debugPrint("Verify Error : $e");
+      return null;
+    }
+  }
+  
+  @override
+  Future<Response?> login({required String email, required String password, required String fcmToken}) async {
+     try {
+      var res = await dio.client().post(
+        "/auth/login",
+        data: {"email": email, "password": password, "fcm_token": fcmToken },
+      );
+      return res;
+    } catch (e) {
+      debugPrint("Login Error : $e");
       return null;
     }
   }
