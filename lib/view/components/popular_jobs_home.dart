@@ -17,7 +17,7 @@ class PopularJobs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(bottom: 17),
-        width: 280.w,
+        width: 327.w,
         height: 74.h,
         decoration: BoxDecoration(
           color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
@@ -50,25 +50,29 @@ class PopularJobs extends StatelessWidget {
               ],
             ),
             Spacer(),
-            Column(
-              children: [
-                Text(
-                  price,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                Text(
-                  location,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: Style.textStyleRegular(
-                    size: 13,
-                    textColor: Style.greyColor90,
+            Padding(
+              padding: const EdgeInsets.only(right: 17),
+              child: Column(
+                children: [
+                  Text(
+                    price,
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                )
-              ],
+                  4.verticalSpace,
+                  Text(
+                    location,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Style.textStyleRegular(
+                      size: 13,
+                      textColor: Style.greyColor90,
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ));

@@ -8,7 +8,11 @@ import '../style/style.dart';
 class DrawerColumn extends StatefulWidget {
   final String name, image;
   final Widget switcher;
-  const DrawerColumn({super.key, required this.name, required this.image, required this.switcher});
+  const DrawerColumn(
+      {super.key,
+      required this.name,
+      required this.image,
+      required this.switcher});
 
   @override
   State<DrawerColumn> createState() => _DrawerColumnState();
@@ -41,7 +45,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
           style:
               Style.textStyleRegular2(size: 14, textColor: Style.primaryColor),
         ),
-        40.verticalSpace,
+        50.verticalSpace,
         Padding(
           padding: const EdgeInsets.only(left: 40),
           child: Row(
@@ -69,7 +73,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
             ],
           ),
         ),
-        79.verticalSpace,
+        50.verticalSpace,
         Padding(
           padding: const EdgeInsets.only(left: 40),
           child: Row(
@@ -98,7 +102,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
             ],
           ),
         ),
-        79.verticalSpace,
+        50.verticalSpace,
         Padding(
           padding: const EdgeInsets.only(left: 40),
           child: Row(
@@ -136,7 +140,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
             ],
           ),
         ),
-        25.verticalSpace,
+        20.verticalSpace,
         widget.switcher
       ],
     );

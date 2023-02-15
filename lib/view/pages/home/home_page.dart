@@ -212,16 +212,13 @@ class _HomePageState extends State<HomePage> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: 6,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 24),
-                        child: PopularJobs(
-                          image:
-                              'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
-                          location: 'Los Angels, US',
-                          price: '\$96,000/y',
-                          text: 'Jr Executive',
-                          title: 'Burger King',
-                        ),
+                      return PopularJobs(
+                        image:
+                            'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
+                        location: 'Los Angels, US',
+                        price: '\$96,000/y',
+                        text: 'Jr Executive',
+                        title: 'Burger King',
                       );
                     },
                   ),
