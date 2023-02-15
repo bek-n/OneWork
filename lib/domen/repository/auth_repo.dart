@@ -185,4 +185,22 @@ class AuthRepo implements AuthFacade {
     }
     return null;
   }
+  
+  @override
+  Future uploadImage(BuildContext context, String imagePath) async {
+    FormData formData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(imagePath),
+     
+    });
+    try {
+      var res = await dio
+          .client()
+          .post("/images", data: formData);
+      print("res : ${res.data}");
+      return res.data;
+    } on DioError catch (e) {
+      print("error : $e");
+    }
+    return null;
+  }
 }

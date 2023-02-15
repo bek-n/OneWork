@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/auth_controller.dart';
 import '../style/style.dart';
 
-class UploadingPhoto extends StatelessWidget {
+class UploadingPhoto extends StatefulWidget {
   const UploadingPhoto({super.key});
 
   @override
+  State<UploadingPhoto> createState() => _UploadingPhotoState();
+}
+
+class _UploadingPhotoState extends State<UploadingPhoto> {
+   final ImagePicker _picker = ImagePicker();
+ 
+  @override
+  
   Widget build(BuildContext context) {
+    final state = context.watch<AuthController>();
     return Column(
       children: [
         Container(
@@ -25,8 +34,9 @@ class UploadingPhoto extends StatelessWidget {
           child: Column(
             children: [
               InkWell(
-                onTap: () {
-                  context.read<AuthController>().getImageCamera();
+                onTap: () async {
+               state.image  = await _picker.pickImage(source: ImageSource.camera);
+                print("xfile: ${state.image ?.path}");
                 },
                 child: Container(
                   height: 80.h,
@@ -59,8 +69,9 @@ class UploadingPhoto extends StatelessWidget {
           child: Column(
             children: [
               InkWell(
-                onTap: () {
-                  context.read<AuthController>().getImageGallery();
+                onTap: () async {
+                 state.image  = await _picker.pickImage(source: ImageSource.gallery);
+                print("xfile: ${state.image ?.path}");
                 },
                 child: Container(
                   height: 80.h,
@@ -83,3 +94,40 @@ class UploadingPhoto extends StatelessWidget {
     );
   }
 }
+
+
+//? Multi images
+
+// ElevatedButton(
+//               onPressed: () async {
+//                 final List<XFile>? images = await _picker.pickMultiImage();
+//                 images?.forEach((e) {
+//                   print(e.path);
+//                 });
+//               },
+//               child: Text("Multi Image Photo")),
+
+
+
+
+//! File upload
+
+
+// ElevatedButton(
+//               onPressed: () async {
+//                 FilePickerResult? result =
+//                     await FilePicker.platform.pickFiles();
+
+//                 if (result != null) {
+//                   PlatformFile file = result.files.first;
+
+//                   print(file.name);
+//                   print(file.bytes);
+//                   print(file.size);
+//                   print(file.extension);
+//                   print(file.path);
+//                 } else {
+//                   // User canceled the picker
+//                 }
+//               },
+//               child: Text("File")),

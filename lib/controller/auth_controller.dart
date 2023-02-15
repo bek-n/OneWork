@@ -19,38 +19,8 @@ class AuthController extends ChangeNotifier {
   ProfileModel? profile = ProfileModel();
   int currentIndex = 0;
   String fcmtoken2 = '';
-  final ImagePicker _image = ImagePicker();
-  String imagePath = "";
-
-
-   getImageCamera() {
-    _image.pickImage(source: ImageSource.camera).then((value) async {
-      if (value != null) {
-        CroppedFile? cropperImage =
-            await ImageCropper().cropImage(sourcePath: value.path);
-        imagePath = cropperImage?.path ?? "";
-        notifyListeners();
-      }
-    });
-    notifyListeners();
-  }
-
-  getImageGallery() {
-    _image.pickImage(source: ImageSource.gallery).then((value) async {
-      if (value != null) {
-        CroppedFile? cropperImage =
-            await ImageCropper().cropImage(sourcePath: value.path);
-        imagePath = cropperImage?.path ?? "";
-        notifyListeners();
-      }
-    });
-    notifyListeners();
-  }
-
-  deleteImage() {
-    imagePath = '';
-    notifyListeners();
-  }
+  String? imageUrl;
+  late XFile? image;
 
   setIndex(int index) {
     currentIndex = index;
@@ -178,6 +148,14 @@ class AuthController extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     await authRepo.getApplication(context, userId);
+    isLoading = false;
+    notifyListeners();
+  }
+
+  getUploading(BuildContext context, String imagePath) async {
+    isLoading = true;
+    notifyListeners();
+    imageUrl = await authRepo.uploadImage(context, imagePath);
     isLoading = false;
     notifyListeners();
   }

@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,6 +63,7 @@ class _FillBioPageState extends State<FillBioPage> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AuthController>();
+    final event = context.read<AuthController>();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -91,10 +92,10 @@ class _FillBioPageState extends State<FillBioPage> {
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
                 ),
-                state.imagePath.isEmpty
+                state.image == null
                     ? const UploadingPhoto()
                     : const SizedBox.shrink(),
-               state.imagePath.isEmpty
+                state.image == null
                     ? const SizedBox.shrink()
                     : Stack(
                         children: [
@@ -104,11 +105,7 @@ class _FillBioPageState extends State<FillBioPage> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                  image: FileImage(
-                                    File(context
-                                        .watch<AuthController>()
-                                        .imagePath),
-                                  ),
+                                  image: NetworkImage(state.imageUrl ?? ''),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -285,7 +282,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     hintext: 'Bio',
                   ),
                 ),
-                 35.verticalSpace,
+                35.verticalSpace,
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: CustomTextFrom(
@@ -313,29 +310,22 @@ class _FillBioPageState extends State<FillBioPage> {
                           bio.text.isEmpty &&
                           country.text.isNotEmpty &&
                           city.text.isNotEmpty &&
-                          speciality.text.isNotEmpty&&
-                          dateOfBirth.text.isNotEmpty &&
-                          context
-                              .watch<AuthController>()
-                              .imagePath
-                              .isNotEmpty) {
-                        context
-                            .read<AuthController>()
-                            .createUser(context, EditUserModel(
-                                 city: city.text,
-                              dateOfBirth:
-                                  dateOfBirth.text,
-                              invisibleAge:
-                                  false,
-                              speciality:
-                                 speciality.text,
-                             
+                          speciality.text.isNotEmpty &&
+                          dateOfBirth.text.isNotEmpty) {
+                        state.getUploading(context, state.image?.path ?? '');
+                        event.createUser(
+                            context,
+                            EditUserModel(
+                              city: city.text,
+                              dateOfBirth: dateOfBirth.text,
+                              invisibleAge: false,
+                              speciality: speciality.text,
                               firstName: firstName.text,
                               lastName: lastName.text,
                               phoneNumber: phonenumber.text,
                               bio: bio.text,
                               country: country.text,
-                              imageUrl: ,
+                              imageUrl: state.imageUrl,
                             ));
                       }
                     },
@@ -348,12 +338,8 @@ class _FillBioPageState extends State<FillBioPage> {
                                 phonenumber.text.isEmpty ||
                                 country.text.isEmpty ||
                                 bio.text.isEmpty ||
-                                speciality.text.isEmpty||
+                                speciality.text.isEmpty ||
                                 city.text.isEmpty ||
-                                context
-                                    .watch<AuthController>()
-                                    .imagePath
-                                    .isEmpty ||
                                 dateOfBirth.text.isEmpty
                             ? Style.primaryDisabledColor
                             : Style.primaryColor,
