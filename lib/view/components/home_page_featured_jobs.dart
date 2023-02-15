@@ -142,23 +142,24 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                 ),
               ),
               24.verticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.salary,
-                      style: Style.textStyleRegular2(
-                          size: 13, textColor: Style.whiteColor),
-                    ),
-                    Text(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  1.horizontalSpace,
+                  Text(
+                    widget.salary,
+                    style: Style.textStyleRegular2(
+                        size: 13, textColor: Style.whiteColor),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
                       widget.textlocation,
                       style: Style.textStyleRegular2(
                           size: 13, textColor: Style.whiteColor),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               )
             ],
           ),

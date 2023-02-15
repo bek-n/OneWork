@@ -3,10 +3,8 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:one_work/controller/auth_controller.dart';
 import 'package:one_work/view/components/custom_textfromfiled.dart';
-import 'package:one_work/view/pages/auth/register_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../main.dart';
@@ -116,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                         filled: true,
                         controller: homeController,
                         suffixicon: const Icon(Icons.search),
-                        label: 'Search a job or position',
+                        label: 'Search',
                         hintext: '',
                         isObscure: false,
                       ),
@@ -165,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 20.verticalSpace,
                 SizedBox(
-                  height: 240.w,
+                  height: 200.w,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
