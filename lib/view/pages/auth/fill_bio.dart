@@ -79,8 +79,7 @@ class _FillBioPageState extends State<FillBioPage> {
                       padding: const EdgeInsets.only(left: 24),
                       child: Text(
                         'Fill in your bio',
-                        style: GoogleFonts.sourceSansPro(
-                            fontSize: 26, fontWeight: FontWeight.w600),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                     )
                   ],
@@ -90,8 +89,7 @@ class _FillBioPageState extends State<FillBioPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: Text(
                     'This data will be displayed in your account profile',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 16, fontWeight: FontWeight.w400),
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
                 state.image == null
