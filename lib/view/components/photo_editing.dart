@@ -16,7 +16,6 @@ class PhotoEditing extends StatefulWidget {
 class _PhotoEditingState extends State<PhotoEditing> {
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AuthController>();
     final event = context.watch<AuthController>();
     return Positioned(
         bottom: 0,

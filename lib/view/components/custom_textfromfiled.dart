@@ -67,14 +67,27 @@ class CustomTextFrom extends StatelessWidget {
           borderSide: BorderSide(color: Colors.red, width: 0.0),
         ),
         border: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xffAFB0B6)),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+          borderSide: BorderSide(
+            color: Color(0xffAFB0B6),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
         enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Color(0xffAFB0B6)),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+          borderSide: BorderSide(
+            color: Color(0xffAFB0B6),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
         focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Style.primaryColor),
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+          borderSide: BorderSide(color: Style.primaryColor),
+          borderRadius: BorderRadius.all(
+            Radius.circular(12),
+          ),
+        ),
       ),
     );
   }

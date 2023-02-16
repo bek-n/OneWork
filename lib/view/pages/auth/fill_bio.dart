@@ -171,6 +171,7 @@ class _FillBioPageState extends State<FillBioPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                   child: TextFormField(
+                    readOnly: true,
                     validator: (s) {
                       if (s?.isEmpty ?? true) {
                         return "Please enter the Date";
@@ -200,21 +201,36 @@ class _FillBioPageState extends State<FillBioPage> {
                           color: Colors.grey,
                         ),
                       ),
+                      hintText: 'Date of birth',
+                      hintStyle: Style.textStyleRegular2(
+                          textColor: Style.greyColor90, size: 15),
                       contentPadding: const EdgeInsets.only(
-                          left: 24, right: 24, top: 12, bottom: 12),
-                      hintText: 'Date of Birth',
-                      hintStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xffDADEE3)),
+                          left: 24, right: 80, top: 12, bottom: 12),
+                      errorBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 0.0),
+                      ),
+                      border: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xffAFB0B6),
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                       enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 221, 206, 206)),
-                          borderRadius: BorderRadius.all(Radius.circular(100))),
+                        borderSide: BorderSide(
+                          color: Color(0xffAFB0B6),
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                       focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Color.fromARGB(255, 221, 206, 206)),
-                          borderRadius: BorderRadius.all(Radius.circular(100))),
+                        borderSide: BorderSide(color: Style.primaryColor),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -247,7 +263,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     },
                     label: 'City',
                     isObscure: false,
-                    controller: country,
+                    controller: city,
                     keyboardType: TextInputType.emailAddress,
                     hintext: '',
                   ),
@@ -264,7 +280,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     },
                     label: 'Bio',
                     isObscure: false,
-                    controller: country,
+                    controller: bio,
                     keyboardType: TextInputType.emailAddress,
                     hintext: '',
                   ),
@@ -291,14 +307,7 @@ class _FillBioPageState extends State<FillBioPage> {
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   child: InkWell(
                     onTap: () async {
-                      if (firstName.text.isNotEmpty &&
-                          lastName.text.isNotEmpty &&
-                          phonenumber.text.isNotEmpty &&
-                          bio.text.isEmpty &&
-                          country.text.isNotEmpty &&
-                          city.text.isNotEmpty &&
-                          speciality.text.isNotEmpty &&
-                          dateOfBirth.text.isNotEmpty) {
+                      if (formKey.currentState?.validate() ?? false) {
                         state.getUploading(context, state.image?.path ?? '');
                         event.createUser(
                             context,
