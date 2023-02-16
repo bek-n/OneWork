@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -105,7 +107,9 @@ class _FillBioPageState extends State<FillBioPage> {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
-                                  image: NetworkImage(state.imageUrl ?? ''),
+                                  image: FileImage(
+                                    File('${state.image?.path}'),
+                                  ),
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -225,23 +229,6 @@ class _FillBioPageState extends State<FillBioPage> {
                       return null;
                     },
                     label: 'Country',
-                    isObscure: false,
-                    controller: country,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter your Bio";
-                      }
-                      return null;
-                    },
-                    label: 'Bio',
                     isObscure: false,
                     controller: country,
                     keyboardType: TextInputType.emailAddress,

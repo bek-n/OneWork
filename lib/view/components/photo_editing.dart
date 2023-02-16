@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +17,7 @@ class _PhotoEditingState extends State<PhotoEditing> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AuthController>();
+    final event = context.watch<AuthController>();
     return Positioned(
         bottom: 0,
         right: 0,
@@ -30,14 +30,18 @@ class _PhotoEditingState extends State<PhotoEditing> {
                       actions: [
                         CupertinoButton(
                             onPressed: (() async {
-                              state.image = await state.picker
-                                  .pickImage(source: ImageSource.camera);
+                              event.getImageFromCamera();
+
+                              // ignore: use_build_context_synchronously
+                              Navigator.pop(context);
                             }),
                             child: const Text("Take photo")),
                         CupertinoButton(
                             onPressed: (() async {
-                              state.image = await state.picker
-                                  .pickImage(source: ImageSource.gallery);
+                              event.getImageFromGallery();
+
+                              // ignore: use_build_context_synchronously
+                              Navigator.pop(context);
                             }),
                             child: const Text("From Gallery")),
                         CupertinoButton(

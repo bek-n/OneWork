@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../controller/auth_controller.dart';
 import '../style/style.dart';
@@ -13,82 +13,95 @@ class UploadingPhoto extends StatefulWidget {
 }
 
 class _UploadingPhotoState extends State<UploadingPhoto> {
-  
- 
   @override
-  
   Widget build(BuildContext context) {
-    final state = context.watch<AuthController>();
+    final event = context.read<AuthController>();
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 23),
-          decoration: BoxDecoration(
-              boxShadow: const[
-                 BoxShadow(
-                    blurRadius: 1, offset: Offset(-0, 1), color: Colors.grey)
-              ],
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Colors.white,
-              border: Border.all(color: const Color(0xffEBEEF2))),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () async {
-               state.image  = await state.picker.pickImage(source: ImageSource.camera);
-                print("xfile: ${state.image ?.path}");
+        15.verticalSpace,
+        Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: const [
+                    BoxShadow(
+                        blurRadius: 1,
+                        offset: Offset(-0, 1),
+                        color: Style.primaryColor)
+                  ],
+                  color: Colors.white,
+                  border: Border.all(color: const Color(0xffEBEEF2))),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      event.getImageFromCamera();
+                    },
+                    child: Container(
+                      height: 200.h,
+                      width: 200.w,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/profile.png'),
+                            fit: BoxFit.cover),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: GestureDetector(
+                onTap: () {
+                  showCupertinoDialog(
+                      context: context,
+                      builder: ((context) => CupertinoAlertDialog(
+                            title: const Text('Choose'),
+                            actions: [
+                              CupertinoButton(
+                                  onPressed: (() async {
+                                    event.getImageFromCamera();
+
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pop(context);
+                                  }),
+                                  child: const Text("Take photo")),
+                              CupertinoButton(
+                                  onPressed: (() async {
+                                    event.getImageFromGallery();
+
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pop(context);
+                                  }),
+                                  child: const Text("From Gallery")),
+                              CupertinoButton(
+                                  onPressed: (() async {
+                                    Navigator.pop(context);
+                                  }),
+                                  child: const Text('Cancel'))
+                            ],
+                          )));
                 },
                 child: Container(
-                  height: 80.h,
-                  width: 80.w,
+                  height: 55.h,
+                  width: 55.w,
                   decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Style.primaryDisabledColor),
+                    color: Color.fromARGB(255, 232, 226, 226),
+                    shape: BoxShape.circle,
+                  ),
+                  padding: EdgeInsets.all(8.r),
                   child: const Icon(
-                    Icons.photo_camera,
-                    color: Style.blackColor,
+                    Icons.add_photo_alternate_outlined,
+                    color: Style.primaryColor,
                   ),
                 ),
               ),
-              10.verticalSpace,
-              Text('Take photo', style: Style.textStyleRegular2()),
-            ],
-          ),
-        ),
-        24.verticalSpace,
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 23),
-          decoration: BoxDecoration(
-              boxShadow: const[
-                 BoxShadow(
-                    blurRadius: 1, offset: Offset(-0, 1), color: Colors.grey)
-              ],
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Colors.white,
-              border: Border.all(color: const Color(0xffEBEEF2))),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () async {
-                 state.image  = await state.picker.pickImage(source: ImageSource.gallery);
-                print("xfile: ${state.image ?.path}");
-                },
-                child: Container(
-                  height: 80.h,
-                  width: 80.w,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Style.primaryDisabledColor),
-                  child: const Icon(
-                    Icons.photo,
-                    color: Style.blackColor,
-                  ),
-                ),
-              ),
-              10.verticalSpace,
-              Text('From gallery', style: Style.textStyleRegular2()),
-            ],
-          ),
+            )
+          ],
         ),
       ],
     );

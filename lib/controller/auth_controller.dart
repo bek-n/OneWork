@@ -18,8 +18,20 @@ class AuthController extends ChangeNotifier {
   int currentIndex = 0;
   String fcmtoken2 = '';
   String? imageUrl;
-   XFile? image;
-   final ImagePicker picker = ImagePicker();
+  XFile? image;
+  final ImagePicker picker = ImagePicker();
+
+  getImageFromCamera() async {
+    image = await picker.pickImage(source: ImageSource.camera);
+     print("xfile: ${image?.path}");
+     notifyListeners();
+  }
+
+  getImageFromGallery() async {
+    image = await picker.pickImage(source: ImageSource.gallery);
+     print("xfile: ${image?.path}");
+    notifyListeners();
+  }
 
   setIndex(int index) {
     currentIndex = index;
@@ -55,7 +67,7 @@ class AuthController extends ChangeNotifier {
       required VoidCallback onSuccess}) async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-       await messaging.requestPermission(
+    await messaging.requestPermission(
       alert: true,
       announcement: false,
       badge: true,
