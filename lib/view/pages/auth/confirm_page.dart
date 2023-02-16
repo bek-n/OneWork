@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -5,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../controller/auth_controller.dart';
 import '../../style/style.dart';
-import '../home/general_page.dart';
 import 'fill_bio.dart';
 
 class VerifyPage extends StatefulWidget {

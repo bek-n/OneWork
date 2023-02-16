@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,8 +45,6 @@ class _FillBioPageState extends State<FillBioPage> {
     city = TextEditingController();
     bio = TextEditingController();
     speciality = TextEditingController();
-  
-    
 
     super.initState();
   }
@@ -124,10 +124,10 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
+                    label: 'First Name',
                     controller: firstName,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'First Name',
+                    hintext: '',
                     isObscure: false,
                   ),
                 ),
@@ -142,9 +142,9 @@ class _FillBioPageState extends State<FillBioPage> {
                       return null;
                     },
                     controller: lastName,
-                    label: '',
+                    label: 'Last Name',
                     keyboardType: TextInputType.name,
-                    hintext: 'Last Name',
+                    hintext: '',
                     isObscure: false,
                   ),
                 ),
@@ -159,9 +159,9 @@ class _FillBioPageState extends State<FillBioPage> {
                       return null;
                     },
                     controller: phonenumber,
-                    label: '',
+                    label: 'Phone Number',
                     keyboardType: TextInputType.phone,
-                    hintext: 'Phone Number',
+                    hintext: '',
                     isObscure: false,
                   ),
                 ),
@@ -226,11 +226,11 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
-                    isObscure: true,
+                    label: 'Country',
+                    isObscure: false,
                     controller: country,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'Country',
+                    hintext: '',
                   ),
                 ),
                 35.verticalSpace,
@@ -243,11 +243,11 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
-                    isObscure: true,
+                    label: 'Bio',
+                    isObscure: false,
                     controller: country,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'Bio',
+                    hintext: '',
                   ),
                 ),
                 35.verticalSpace,
@@ -260,11 +260,11 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
-                    isObscure: true,
+                    label: 'City',
+                    isObscure: false,
                     controller: country,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'City',
+                    hintext: '',
                   ),
                 ),
                 35.verticalSpace,
@@ -277,11 +277,11 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
-                    isObscure: true,
+                    label: 'Bio',
+                    isObscure: false,
                     controller: country,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'Bio',
+                    hintext: '',
                   ),
                 ),
                 35.verticalSpace,
@@ -294,11 +294,11 @@ class _FillBioPageState extends State<FillBioPage> {
                       }
                       return null;
                     },
-                    label: '',
-                    isObscure: true,
+                    label: 'Speciality',
+                    isObscure: false,
                     controller: speciality,
                     keyboardType: TextInputType.emailAddress,
-                    hintext: 'Speciality',
+                    hintext: '',
                   ),
                 ),
                 Padding(

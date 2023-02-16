@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:one_work/view/style/style.dart';
+
 
 class GoogleFacebook extends StatelessWidget {
   const GoogleFacebook({super.key});

@@ -24,8 +24,8 @@ class _UploadingPhotoState extends State<UploadingPhoto> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 23),
           decoration: BoxDecoration(
-              boxShadow: [
-                const BoxShadow(
+              boxShadow: const[
+                 BoxShadow(
                     blurRadius: 1, offset: Offset(-0, 1), color: Colors.grey)
               ],
               borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -59,8 +59,8 @@ class _UploadingPhotoState extends State<UploadingPhoto> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 150, vertical: 23),
           decoration: BoxDecoration(
-              boxShadow: [
-                const BoxShadow(
+              boxShadow: const[
+                 BoxShadow(
                     blurRadius: 1, offset: Offset(-0, 1), color: Colors.grey)
               ],
               borderRadius: const BorderRadius.all(Radius.circular(20)),
