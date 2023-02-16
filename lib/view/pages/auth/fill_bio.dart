@@ -43,6 +43,8 @@ class _FillBioPageState extends State<FillBioPage> {
     city = TextEditingController();
     bio = TextEditingController();
     speciality = TextEditingController();
+  
+    
 
     super.initState();
   }

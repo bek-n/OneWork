@@ -1,8 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../domen/interface/auth_facade.dart';
 import '../domen/model/edit_user_model.dart';
 import '../domen/model/login_model.dart';
@@ -20,7 +18,7 @@ class AuthController extends ChangeNotifier {
   int currentIndex = 0;
   String fcmtoken2 = '';
   String? imageUrl;
-  late XFile? image;
+   XFile? image;
    final ImagePicker picker = ImagePicker();
 
   setIndex(int index) {

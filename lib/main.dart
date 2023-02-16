@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:one_work/view/pages/auth/splash_screen.dart';
+import 'package:one_work/view/pages/auth/fill_bio.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import 'controller/auth_controller.dart';
@@ -114,7 +114,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 scaffoldBackgroundColor: Style.darkBgcolorOfApp,
               ),
-              home: const SplashScreen(),
+              home: const FillBioPage(),
             ),
           );
         });
