@@ -97,137 +97,137 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                34.verticalSpace,
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 16),
-                      width: 280.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              34.verticalSpace,
+              Row(
+                children: [
+                  24.horizontalSpace,
+                  Container(
+                    margin: const EdgeInsets.only(right: 16),
+                    width: 280.w,
+                    height: 48.h,
+                    child: CustomTextFrom(
+                      fillColor: const Color(0xffF2F2F3),
+                      filled: true,
+                      controller: homeController,
+                      suffixicon: const Icon(Icons.search),
+                      label: 'Search',
+                      hintext: '',
+                      isObscure: false,
+                    ),
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 24),
+                    child: Container(
                       height: 48.h,
-                      child: CustomTextFrom(
-                        fillColor: const Color(0xffF2F2F3),
-                        filled: true,
-                        controller: homeController,
-                        suffixicon: const Icon(Icons.search),
-                        label: 'Search',
-                        hintext: '',
-                        isObscure: false,
+                      width: 48.w,
+                      decoration: const BoxDecoration(
+                        color: Style.greyColor65,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16),
+                        ),
+                      ),
+                      child: const Icon(
+                        Icons.sort,
+                        color: Style.primaryColor,
                       ),
                     ),
-                    const Spacer(),
-                    Padding(
+                  )
+                ],
+              ),
+              34.verticalSpace,
+              Row(
+                children: [
+                  24.horizontalSpace,
+                  Text(
+                    'Featured Jobs',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    child: Padding(
                       padding: const EdgeInsets.only(right: 24),
-                      child: Container(
-                        height: 48.h,
-                        width: 48.w,
-                        decoration: const BoxDecoration(
-                          color: Style.greyColor65,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(16),
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.sort,
-                          color: Style.primaryColor,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                34.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'Featured Jobs',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 24),
-                        child: Text(
-                          'See all',
-                          style: Style.textStyleRegular(
-                            size: 14,
-                            textColor: Style.greyColor90,
-                          ),
+                      child: Text(
+                        'See all',
+                        style: Style.textStyleRegular(
+                          size: 14,
+                          textColor: Style.greyColor90,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                20.verticalSpace,
-                SizedBox(
-                  height: 200.w,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return FeaturedJobs(
-                        index: index,
-                        imageLogoCompany:
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png',
-                        companyName: 'Facebook',
-                        salary: '\$180,00/year',
-                        textPosition: 'Software Engineer',
-                        textlocation: 'California, USA',
-                        wrap1: 'IT',
-                        wrap2: 'Full-Time',
-                        wrap3: 'Junior',
-                      );
-                    },
                   ),
+                ],
+              ),
+              20.verticalSpace,
+              SizedBox(
+                height: 200.w,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return FeaturedJobs(
+                      index: index,
+                      imageLogoCompany:
+                          'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png',
+                      companyName: 'Facebook',
+                      salary: '\$180,00/year',
+                      textPosition: 'Software Engineer',
+                      textlocation: 'California, USA',
+                      wrap1: 'IT',
+                      wrap2: 'Full-Time',
+                      wrap3: 'Junior',
+                    );
+                  },
                 ),
-                34.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      'Popular Jobs',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 24),
-                        child: Text(
-                          'See all',
-                          style: Style.textStyleRegular(
-                            size: 14,
-                            textColor: Style.greyColor90,
-                          ),
+              ),
+              34.verticalSpace,
+              Row(
+                children: [
+                  24.horizontalSpace,
+                  Text(
+                    'Popular Jobs',
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                  const Spacer(),
+                  GestureDetector(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 24),
+                      child: Text(
+                        'See all',
+                        style: Style.textStyleRegular(
+                          size: 14,
+                          textColor: Style.greyColor90,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                20.verticalSpace,
-                SizedBox(
-                  height: 550.h,
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 6,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 24),
-                        child: PopularJobs(
-                          image:
-                              'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
-                          location: 'Los Angels, US',
-                          price: '\$96,000/y',
-                          text: 'Jr Executive',
-                          title: 'Burger King',
-                        ),
-                      );
-                    },
                   ),
+                ],
+              ),
+              20.verticalSpace,
+              SizedBox(
+                height: 550.h,
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 6,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 24, left: 24),
+                      child: PopularJobs(
+                        image:
+                            'https://www.pngall.com/wp-content/uploads/12/Burger-King-PNG-Photo.png',
+                        location: 'Los Angels, US',
+                        price: '\$96,000/y',
+                        text: 'Jr Executive',
+                        title: 'Burger King',
+                      ),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
