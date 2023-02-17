@@ -12,7 +12,7 @@ class AuthController extends ChangeNotifier {
   String? wrongPassword;
   bool isLoading = false;
   bool isVisibility = true;
-  String email = '';
+  String email1 = '';
   final AuthFacade authRepo = AuthRepo();
   ProfileModel? profile = ProfileModel();
   int currentIndex = 0;
@@ -23,13 +23,13 @@ class AuthController extends ChangeNotifier {
 
   getImageFromCamera() async {
     image = await picker.pickImage(source: ImageSource.camera);
-     print("xfile: ${image?.path}");
-     notifyListeners();
+    print("xfile: ${image?.path}");
+    notifyListeners();
   }
 
   getImageFromGallery() async {
     image = await picker.pickImage(source: ImageSource.gallery);
-     print("xfile: ${image?.path}");
+    print("xfile: ${image?.path}");
     notifyListeners();
   }
 
@@ -48,7 +48,7 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
     if (password == confirmPassword) {
       var res = await authRepo.signUp(email: email, password: password);
-      email = email;
+      email1 = email;
       if (res?.statusCode == 200) {
         isLoading = false;
         notifyListeners();
@@ -111,8 +111,9 @@ class AuthController extends ChangeNotifier {
     required String password,
     required VoidCallback onSuccess,
   }) async {
+    final fcmtoken1 = await FirebaseMessaging.instance.getToken();
     var res = await authRepo.login(
-        email: email, password: password, fcmToken: fcmtoken2);
+        email: email, password: password, fcmToken: '$fcmtoken1');
     if (res?.statusCode == 200) {
       var login = LoginModel.fromJson(res?.data);
       LocalStore.setAccessToken(login.accessToken ?? "");

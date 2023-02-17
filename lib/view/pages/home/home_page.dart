@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
             child: DrawerColumn(
           image: 'assets/images/2.png',
-          name: state.email,
+          name: '${state.profile?.id}',
           switcher: DayNightSwitcher(
             isDarkModeEnabled: !isChangedTheme,
             onStateChanged: (isDarkModeEnabled) {
