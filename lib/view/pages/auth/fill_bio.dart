@@ -33,8 +33,7 @@ class _FillBioPageState extends State<FillBioPage> {
   late TextEditingController dateOfBirth;
   late TextEditingController bio;
   late TextEditingController speciality;
-  late TextEditingController city;
-  late TextEditingController country;
+
   String? countryValue;
   String? stateValue;
   String? cityValue;
@@ -47,10 +46,8 @@ class _FillBioPageState extends State<FillBioPage> {
   void initState() {
     firstName = TextEditingController();
     lastName = TextEditingController();
-    country = TextEditingController();
     dateOfBirth = TextEditingController();
     phonenumber = TextEditingController();
-    city = TextEditingController();
     bio = TextEditingController();
     speciality = TextEditingController();
 
@@ -61,10 +58,8 @@ class _FillBioPageState extends State<FillBioPage> {
   void dispose() {
     firstName.dispose();
     lastName.dispose();
-    country.dispose();
     dateOfBirth.dispose();
     phonenumber.dispose();
-    city.dispose();
     bio.dispose();
     speciality.dispose();
     super.dispose();
@@ -297,7 +292,7 @@ class _FillBioPageState extends State<FillBioPage> {
                           event.createUser(
                               context,
                               EditUserModel(
-                                city: city.text,
+                                city: stateValue,
                                 dateOfBirth: dateOfBirth.text,
                                 invisibleAge: false,
                                 speciality: speciality.text,
@@ -305,7 +300,7 @@ class _FillBioPageState extends State<FillBioPage> {
                                 lastName: lastName.text,
                                 phoneNumber: phonenumber.text,
                                 bio: bio.text,
-                                country: country.text,
+                                country: countryValue,
                                 imageUrl: state.imageUrl,
                               ));
                           Navigator.of(context).pushAndRemoveUntil(
