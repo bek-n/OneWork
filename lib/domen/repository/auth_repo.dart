@@ -192,7 +192,7 @@ class AuthRepo implements AuthFacade {
       "image": await MultipartFile.fromFile(imagePath),
     });
     try {
-      var res = await dio.client().post("/image", data: formData);
+      var res = await dio.client().post("/images", data: formData);
       print("res : ${res.data}");
       return res.data;
     } on DioError catch (e) {
