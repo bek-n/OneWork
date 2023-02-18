@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:io';
+import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,6 +35,9 @@ class _FillBioPageState extends State<FillBioPage> {
   late TextEditingController speciality;
   late TextEditingController city;
   late TextEditingController country;
+  String? countryValue;
+  String? stateValue;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String datetext = '';
@@ -229,37 +233,54 @@ class _FillBioPageState extends State<FillBioPage> {
                   35.verticalSpace,
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                    child: CustomTextFrom(
-                      validator: (s) {
-                        if (s?.isEmpty ?? true) {
-                          return "Please enter your Country";
-                        }
-                        return null;
+
+                    child: CSCPicker(
+                      stateSearchPlaceholder: 'Search City',
+                      stateDropdownLabel: 'City',
+                      showCities: false,
+                      onCountryChanged: (value) {
+                        setState(() {
+                          countryValue = value;
+                        });
                       },
-                      label: 'Country',
-                      isObscure: false,
-                      controller: country,
-                      keyboardType: TextInputType.emailAddress,
-                      hintext: '',
-                    ),
-                  ),
-                  35.verticalSpace,
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                    child: CustomTextFrom(
-                      validator: (s) {
-                        if (s?.isEmpty ?? true) {
-                          return "Please enter your City";
-                        }
-                        return null;
+                      onStateChanged: (value) {
+                        setState(() {
+                          stateValue = value;
+                        });
                       },
-                      label: 'City',
-                      isObscure: false,
-                      controller: city,
-                      keyboardType: TextInputType.emailAddress,
-                      hintext: '',
                     ),
+
+                    // child: CustomTextFrom(
+                    //   validator: (s) {
+                    //     if (s?.isEmpty ?? true) {
+                    //       return "Please enter your Country";
+                    //     }
+                    //     return null;
+                    //   },
+                    //   label: 'Country',
+                    //   isObscure: false,
+                    //   controller: country,
+                    //   keyboardType: TextInputType.emailAddress,
+                    //   hintext: '',
+                    // ),
                   ),
+                  // 35.verticalSpace,
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                  //   child: CustomTextFrom(
+                  //     validator: (s) {
+                  //       if (s?.isEmpty ?? true) {
+                  //         return "Please enter your City";
+                  //       }
+                  //       return null;
+                  //     },
+                  //     label: 'City',
+                  //     isObscure: false,
+                  //     controller: city,
+                  //     keyboardType: TextInputType.emailAddress,
+                  //     hintext: '',
+                  //   ),
+                  // ),
                   35.verticalSpace,
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
