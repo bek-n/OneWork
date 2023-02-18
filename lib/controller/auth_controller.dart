@@ -14,7 +14,7 @@ class AuthController extends ChangeNotifier {
   bool isVisibility = true;
   String email1 = '';
   final AuthFacade authRepo = AuthRepo();
-  ProfileModel? profile = ProfileModel();
+  GetProfile? profile = GetProfile();
   int currentIndex = 0;
   String fcmtoken2 = '';
   String? imageUrl;
@@ -131,6 +131,7 @@ class AuthController extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     profile = await authRepo.getUser(context);
+    print(profile?.user?.email);
     isLoading = false;
     notifyListeners();
   }

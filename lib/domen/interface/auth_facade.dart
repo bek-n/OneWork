@@ -20,7 +20,7 @@ abstract class AuthFacade {
 
   Future<TokenModel?> refreshToken(BuildContext context);
 
-  Future<ProfileModel?> getUser(BuildContext context);
+  Future<GetProfile?> getUser(BuildContext context);
 
   Future<ApplicationModel?> getApplication(BuildContext context, int userId);
 

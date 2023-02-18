@@ -27,8 +27,6 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-  
-
   @override
   Future logout() async {
     try {
@@ -43,16 +41,15 @@ class AuthRepo implements AuthFacade {
     }
   }
 
-  
-
   @override
-  Future<ProfileModel?> getUser(BuildContext context) async {
+  Future<GetProfile?> getUser(BuildContext context) async {
     try {
       final token = await LocalStore.getAccessToken();
       var res = await dio.client(token: token).get(
             "/api/profile/applicant",
           );
-      return ProfileModel.fromJson(res.data);
+          print("${res.data}");
+      return GetProfile.fromJson(res.data);
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) {
         var res = await refreshToken(context);
@@ -61,6 +58,7 @@ class AuthRepo implements AuthFacade {
           await getUser(context);
         }
       }
+      print("error: $e");
     }
     return null;
   }
@@ -133,17 +131,16 @@ class AuthRepo implements AuthFacade {
     }
     return null;
   }
-  
+
   @override
-  Future<TokenModel?> verifyEmail({required String email, required String code, required String fcmToken}) async {
+  Future<TokenModel?> verifyEmail(
+      {required String email,
+      required String code,
+      required String fcmToken}) async {
     try {
       var res = await dio.client().post(
         "/auth/verify",
-        data: {
-          "email": email,
-          "code": code,
-          "fcm_token": fcmToken
-        },
+        data: {"email": email, "code": code, "fcm_token": fcmToken},
       );
       return TokenModel.fromJson(res.data);
     } catch (e) {
@@ -151,13 +148,16 @@ class AuthRepo implements AuthFacade {
       return null;
     }
   }
-  
+
   @override
-  Future<Response?> login({required String email, required String password, required String fcmToken}) async {
-     try {
+  Future<Response?> login(
+      {required String email,
+      required String password,
+      required String fcmToken}) async {
+    try {
       var res = await dio.client().post(
         "/auth/login",
-        data: {"email": email, "password": password, "fcm_token": fcmToken },
+        data: {"email": email, "password": password, "fcm_token": fcmToken},
       );
       return res;
     } catch (e) {
@@ -165,7 +165,7 @@ class AuthRepo implements AuthFacade {
       return null;
     }
   }
-  
+
   @override
   Future createUser(BuildContext context, EditUserModel newUser) async {
     try {
@@ -185,17 +185,14 @@ class AuthRepo implements AuthFacade {
     }
     return null;
   }
-  
+
   @override
   Future uploadImage(BuildContext context, String imagePath) async {
     FormData formData = FormData.fromMap({
       "image": await MultipartFile.fromFile(imagePath),
-     
     });
     try {
-      var res = await dio
-          .client()
-          .post("/images", data: formData);
+      var res = await dio.client().post("/images", data: formData);
       print("res : ${res.data}");
       return res.data;
     } on DioError catch (e) {
