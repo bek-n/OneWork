@@ -15,6 +15,7 @@ import '../../../controller/auth_controller.dart';
 import '../../components/custom_phoneNumberInput.dart';
 import '../../components/custom_textfromfiled.dart';
 import '../../components/photo_editing.dart';
+import '../../components/unfocus.dart';
 import '../../components/uploading_photo.dart';
 
 class FillBioPage extends StatefulWidget {
@@ -68,279 +69,282 @@ class _FillBioPageState extends State<FillBioPage> {
   Widget build(BuildContext context) {
     final state = context.watch<AuthController>();
     final event = context.read<AuthController>();
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 24),
-                      child: Text(
-                        'Fill in your bio',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    )
-                  ],
-                ),
-                24.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Text(
-                    'This data will be displayed in your account profile',
-                    style: Theme.of(context).textTheme.headlineSmall,
+    return OnUnFocusTap(
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 24),
+                        child: Text(
+                          'Fill in your bio',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                state.image == null
-                    ? const UploadingPhoto()
-                    : const SizedBox.shrink(),
-                state.image == null
-                    ? const SizedBox.shrink()
-                    : Stack(
-                        children: [
-                          Container(
-                            width: 250.w,
-                            height: 250.h,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: FileImage(
-                                    File('${state.image?.path}'),
-                                  ),
-                                  fit: BoxFit.cover),
-                            ),
-                          ),
-                          const PhotoEditing()
-                        ],
-                      ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter First Name";
-                      }
-                      return null;
-                    },
-                    label: 'First Name',
-                    controller: firstName,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                    isObscure: false,
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter Last Name";
-                      }
-                      return null;
-                    },
-                    controller: lastName,
-                    label: 'Last Name',
-                    keyboardType: TextInputType.name,
-                    hintext: '',
-                    isObscure: false,
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                    child: CustomPhoneInput(
-                      controller: phonenumber,
-                    )),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: TextFormField(
-                    readOnly: true,
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter the Date";
-                      }
-                      return null;
-                    },
-                    controller: dateOfBirth,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: (() {
-                          showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(1970),
-                                  lastDate: DateTime.now())
-                              .then((value) {
-                            dateOfBirth.text = DateFormat('MMMM dd, yyyy')
-                                .format(value ?? DateTime.now());
-                            setState(() {});
-                          });
-                        }),
-                        icon: SvgPicture.asset(
-                          'assets/svg/calendar.svg',
-                          height: 24,
-                          width: 24,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      hintText: 'Date of birth',
-                      hintStyle: Style.textStyleRegular2(
-                          textColor: Style.greyColor90, size: 15),
-                      contentPadding: const EdgeInsets.only(
-                          left: 24, right: 80, top: 12, bottom: 12),
-                      errorBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red, width: 0.0),
-                      ),
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xffAFB0B6),
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xffAFB0B6),
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Style.primaryColor),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
+                  24.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      'This data will be displayed in your account profile',
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter your Country";
-                      }
-                      return null;
-                    },
-                    label: 'Country',
-                    isObscure: false,
-                    controller: country,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter your City";
-                      }
-                      return null;
-                    },
-                    label: 'City',
-                    isObscure: false,
-                    controller: city,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter your Bio";
-                      }
-                      return null;
-                    },
-                    label: 'Bio',
-                    isObscure: false,
-                    controller: bio,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                  ),
-                ),
-                35.verticalSpace,
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter your Speciality";
-                      }
-                      return null;
-                    },
-                    label: 'Speciality',
-                    isObscure: false,
-                    controller: speciality,
-                    keyboardType: TextInputType.emailAddress,
-                    hintext: '',
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                  child: InkWell(
-                    onTap: () async {
-                      if (formKey.currentState?.validate() ?? false) {
-                        state.getUploading(context, state.image?.path ?? '');
-                        event.createUser(
-                            context,
-                            EditUserModel(
-                              city: city.text,
-                              dateOfBirth: dateOfBirth.text,
-                              invisibleAge: false,
-                              speciality: speciality.text,
-                              firstName: firstName.text,
-                              lastName: lastName.text,
-                              phoneNumber: phonenumber.text,
-                              bio: bio.text,
-                              country: country.text,
-                              imageUrl: state.imageUrl,
-                            ));
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (_) => GeneralPage()),
-                            (route) => false);
-                      }
-                    },
-                    child: AnimatedContainer(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      duration: const Duration(milliseconds: 400),
-                      decoration: BoxDecoration(
-                        color: Style.primaryColor,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(32)),
-                      ),
-                      child: Center(
-                        child: state.isLoading
-                            ? LoadingAnimationWidget.fallingDot(
-                                color: Style.whiteColor, size: 35)
-                            : Text(
-                                'Next',
-                                style: GoogleFonts.sourceSansPro(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
+                  state.image == null
+                      ? const UploadingPhoto()
+                      : const SizedBox.shrink(),
+                  state.image == null
+                      ? const SizedBox.shrink()
+                      : Stack(
+                          children: [
+                            Container(
+                              width: 250.w,
+                              height: 250.h,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: FileImage(
+                                      File('${state.image?.path}'),
+                                    ),
+                                    fit: BoxFit.cover),
                               ),
+                            ),
+                            const PhotoEditing()
+                          ],
+                        ),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter First Name";
+                        }
+                        return null;
+                      },
+                      label: 'First Name',
+                      controller: firstName,
+                      keyboardType: TextInputType.emailAddress,
+                      hintext: '',
+                      isObscure: false,
+                    ),
+                  ),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter Last Name";
+                        }
+                        return null;
+                      },
+                      controller: lastName,
+                      label: 'Last Name',
+                      keyboardType: TextInputType.name,
+                      hintext: '',
+                      isObscure: false,
+                    ),
+                  ),
+                  35.verticalSpace,
+                  Padding(
+                      padding:
+                          const EdgeInsets.only(top: 8, left: 24, right: 24),
+                      child: CustomPhoneInput(
+                        controller: phonenumber,
+                      )),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: TextFormField(
+                      readOnly: true,
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter the Date";
+                        }
+                        return null;
+                      },
+                      controller: dateOfBirth,
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: (() {
+                            showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(1970),
+                                    lastDate: DateTime.now())
+                                .then((value) {
+                              dateOfBirth.text = DateFormat('MMMM dd, yyyy')
+                                  .format(value ?? DateTime.now());
+                              setState(() {});
+                            });
+                          }),
+                          icon: SvgPicture.asset(
+                            'assets/svg/calendar.svg',
+                            height: 24,
+                            width: 24,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        hintText: 'Date of birth',
+                        hintStyle: Style.textStyleRegular2(
+                            textColor: Style.greyColor90, size: 15),
+                        contentPadding: const EdgeInsets.only(
+                            left: 24, right: 80, top: 12, bottom: 12),
+                        errorBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red, width: 0.0),
+                        ),
+                        border: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xffAFB0B6),
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xffAFB0B6),
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Style.primaryColor),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(12),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter your Country";
+                        }
+                        return null;
+                      },
+                      label: 'Country',
+                      isObscure: false,
+                      controller: country,
+                      keyboardType: TextInputType.emailAddress,
+                      hintext: '',
+                    ),
+                  ),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter your City";
+                        }
+                        return null;
+                      },
+                      label: 'City',
+                      isObscure: false,
+                      controller: city,
+                      keyboardType: TextInputType.emailAddress,
+                      hintext: '',
+                    ),
+                  ),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter your Bio";
+                        }
+                        return null;
+                      },
+                      label: 'Bio',
+                      isObscure: false,
+                      controller: bio,
+                      keyboardType: TextInputType.emailAddress,
+                      hintext: '',
+                    ),
+                  ),
+                  35.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomTextFrom(
+                      validator: (s) {
+                        if (s?.isEmpty ?? true) {
+                          return "Please enter your Speciality";
+                        }
+                        return null;
+                      },
+                      label: 'Speciality',
+                      isObscure: false,
+                      controller: speciality,
+                      keyboardType: TextInputType.emailAddress,
+                      hintext: '',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 20),
+                    child: InkWell(
+                      onTap: () async {
+                        if (formKey.currentState?.validate() ?? false) {
+                          state.getUploading(context, state.image?.path ?? '');
+                          event.createUser(
+                              context,
+                              EditUserModel(
+                                city: city.text,
+                                dateOfBirth: dateOfBirth.text,
+                                invisibleAge: false,
+                                speciality: speciality.text,
+                                firstName: firstName.text,
+                                lastName: lastName.text,
+                                phoneNumber: phonenumber.text,
+                                bio: bio.text,
+                                country: country.text,
+                                imageUrl: state.imageUrl,
+                              ));
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (_) => GeneralPage()),
+                              (route) => false);
+                        }
+                      },
+                      child: AnimatedContainer(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        duration: const Duration(milliseconds: 400),
+                        decoration: BoxDecoration(
+                          color: Style.primaryColor,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(32)),
+                        ),
+                        child: Center(
+                          child: state.isLoading
+                              ? LoadingAnimationWidget.fallingDot(
+                                  color: Style.whiteColor, size: 35)
+                              : Text(
+                                  'Next',
+                                  style: GoogleFonts.sourceSansPro(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white),
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
