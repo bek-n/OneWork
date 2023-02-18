@@ -13,6 +13,7 @@ import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
+import '../../components/custom_datePicker.dart';
 import '../../components/custom_phoneNumberInput.dart';
 import '../../components/custom_textfromfiled.dart';
 import '../../components/photo_editing.dart';
@@ -162,68 +163,8 @@ class _FillBioPageState extends State<FillBioPage> {
                   35.verticalSpace,
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                    child: TextFormField(
-                      readOnly: true,
-                      validator: (s) {
-                        if (s?.isEmpty ?? true) {
-                          return "Please enter the Date";
-                        }
-                        return null;
-                      },
+                    child: DatePicker(
                       controller: dateOfBirth,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: (() {
-                            showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(1970),
-                                    lastDate: DateTime.now())
-                                .then((value) {
-                              dateOfBirth.text = DateFormat('MMMM dd, yyyy')
-                                  .format(value ?? DateTime.now());
-                              setState(() {});
-                            });
-                          }),
-                          icon: SvgPicture.asset(
-                            'assets/svg/calendar.svg',
-                            height: 24,
-                            width: 24,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        hintText: 'Date of birth',
-                        hintStyle: Style.textStyleRegular2(
-                            textColor: Style.greyColor90, size: 15),
-                        contentPadding: const EdgeInsets.only(
-                            left: 24, right: 80, top: 12, bottom: 12),
-                        errorBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red, width: 0.0),
-                        ),
-                        border: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xffAFB0B6),
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xffAFB0B6),
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Style.primaryColor),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                   35.verticalSpace,
