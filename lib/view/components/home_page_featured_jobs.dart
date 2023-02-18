@@ -95,6 +95,8 @@ class _FeaturedJobsState extends State<FeaturedJobs> {
                     Wrap(
                       children: [
                         Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 4),
                           decoration: BoxDecoration(
                               color: Style.whiteColor.withOpacity(0.15),
                               borderRadius: BorderRadius.circular(65)),
