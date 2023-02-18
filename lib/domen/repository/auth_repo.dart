@@ -42,14 +42,14 @@ class AuthRepo implements AuthFacade {
   }
 
   @override
-  Future<GetProfile?> getUser(BuildContext context) async {
+  Future<getProfile?> getUser(BuildContext context) async {
     try {
       final token = await LocalStore.getAccessToken();
       var res = await dio.client(token: token).get(
             "/api/profile/applicant",
           );
           print("${res.data}");
-      return GetProfile.fromJson(res.data);
+      return getProfile.fromJson(res.data);
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) {
         var res = await refreshToken(context);
