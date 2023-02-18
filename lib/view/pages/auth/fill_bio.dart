@@ -37,6 +37,7 @@ class _FillBioPageState extends State<FillBioPage> {
   late TextEditingController country;
   String? countryValue;
   String? stateValue;
+  String? cityValue;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -233,7 +234,6 @@ class _FillBioPageState extends State<FillBioPage> {
                   35.verticalSpace,
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-
                     child: CSCPicker(
                       stateSearchPlaceholder: 'Search City',
                       stateDropdownLabel: 'City',
@@ -248,39 +248,11 @@ class _FillBioPageState extends State<FillBioPage> {
                           stateValue = value;
                         });
                       },
+                      onCityChanged: (value) {
+                        cityValue = value;
+                      },
                     ),
-
-                    // child: CustomTextFrom(
-                    //   validator: (s) {
-                    //     if (s?.isEmpty ?? true) {
-                    //       return "Please enter your Country";
-                    //     }
-                    //     return null;
-                    //   },
-                    //   label: 'Country',
-                    //   isObscure: false,
-                    //   controller: country,
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   hintext: '',
-                    // ),
                   ),
-                  // 35.verticalSpace,
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  //   child: CustomTextFrom(
-                  //     validator: (s) {
-                  //       if (s?.isEmpty ?? true) {
-                  //         return "Please enter your City";
-                  //       }
-                  //       return null;
-                  //     },
-                  //     label: 'City',
-                  //     isObscure: false,
-                  //     controller: city,
-                  //     keyboardType: TextInputType.emailAddress,
-                  //     hintext: '',
-                  //   ),
-                  // ),
                   35.verticalSpace,
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
