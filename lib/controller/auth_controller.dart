@@ -90,14 +90,13 @@ class AuthController extends ChangeNotifier {
     });
 
     final fcmtoken1 = await FirebaseMessaging.instance.getToken();
-    fcmtoken = '$fcmtoken1';
-    fcmtoken2 = fcmtoken;
-    print('fcm : $fcmtoken');
+
+    print('fcm : $fcmtoken2');
     isLoading = true;
     notifyListeners();
 
     var res = await authRepo.verifyEmail(
-        email: email, code: code, fcmToken: fcmtoken);
+        email: email, code: code, fcmToken: '$fcmtoken1');
     if (res != null) {
       await LocalStore.setAccessToken(res.token);
       isLoading = false;
@@ -111,9 +110,9 @@ class AuthController extends ChangeNotifier {
     required String password,
     required VoidCallback onSuccess,
   }) async {
-    final fcmtoken1 = await FirebaseMessaging.instance.getToken();
+    final fcmtoken = await FirebaseMessaging.instance.getToken();
     var res = await authRepo.login(
-        email: email, password: password, fcmToken: '$fcmtoken1');
+        email: email, password: password, fcmToken: '$fcmtoken');
     if (res?.statusCode == 200) {
       var login = LoginModel.fromJson(res?.data);
       LocalStore.setAccessToken(login.accessToken ?? "");

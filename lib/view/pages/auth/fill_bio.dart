@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,6 +12,7 @@ import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
+import '../../components/custom_phoneNumberInput.dart';
 import '../../components/custom_textfromfiled.dart';
 import '../../components/photo_editing.dart';
 import '../../components/uploading_photo.dart';
@@ -152,21 +152,10 @@ class _FillBioPageState extends State<FillBioPage> {
                 ),
                 35.verticalSpace,
                 Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                  child: CustomTextFrom(
-                    validator: (s) {
-                      if (s?.isEmpty ?? true) {
-                        return "Please enter Phone number";
-                      }
-                      return null;
-                    },
-                    controller: phonenumber,
-                    label: 'Phone Number',
-                    keyboardType: TextInputType.phone,
-                    hintext: '',
-                    isObscure: false,
-                  ),
-                ),
+                    padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+                    child: CustomPhoneInput(
+                      controller: phonenumber,
+                    )),
                 35.verticalSpace,
                 Padding(
                   padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
@@ -332,16 +321,7 @@ class _FillBioPageState extends State<FillBioPage> {
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       duration: const Duration(milliseconds: 400),
                       decoration: BoxDecoration(
-                        color: firstName.text.isEmpty ||
-                                lastName.text.isEmpty ||
-                                phonenumber.text.isEmpty ||
-                                country.text.isEmpty ||
-                                bio.text.isEmpty ||
-                                speciality.text.isEmpty ||
-                                city.text.isEmpty ||
-                                dateOfBirth.text.isEmpty
-                            ? Style.primaryDisabledColor
-                            : Style.primaryColor,
+                        color: Style.primaryColor,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(32)),
                       ),

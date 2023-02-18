@@ -48,7 +48,7 @@ class AuthRepo implements AuthFacade {
       var res = await dio.client(token: token).get(
             "/api/profile/applicant",
           );
-          print("${res.data}");
+      print("${res.data}");
       return getProfile.fromJson(res.data);
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) {
@@ -192,7 +192,7 @@ class AuthRepo implements AuthFacade {
       "image": await MultipartFile.fromFile(imagePath),
     });
     try {
-      var res = await dio.client().post("/images", data: formData);
+      var res = await dio.client().post("/image", data: formData);
       print("res : ${res.data}");
       return res.data;
     } on DioError catch (e) {

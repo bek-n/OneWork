@@ -57,6 +57,7 @@ dependencies:
   image_cropper: ^3.0.1
   intl: ^0.17.0
   flutter_svg: ^1.1.6
+  intl_phone_number_input: ^0.7.2
  
   
  

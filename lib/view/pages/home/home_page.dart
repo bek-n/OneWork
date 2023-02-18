@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
             child: DrawerColumn(
           image: 'assets/images/2.png',
-          name: '${state.profile?.user?.email}',
+          name: '${state.profile?.user?.fullName}',
           switcher: DayNightSwitcher(
             isDarkModeEnabled: !isChangedTheme,
             onStateChanged: (isDarkModeEnabled) {
@@ -92,6 +92,7 @@ class _HomePageState extends State<HomePage> {
               setState(() {});
             },
           ),
+          jobPosition: '${state.profile?.user?.profession}',
         )),
       ),
       resizeToAvoidBottomInset: false,

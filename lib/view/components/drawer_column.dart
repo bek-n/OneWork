@@ -6,13 +6,13 @@ import '../pages/auth/register_page.dart';
 import '../style/style.dart';
 
 class DrawerColumn extends StatefulWidget {
-  final String name, image;
+  final String name, image,jobPosition;
   final Widget switcher;
   const DrawerColumn(
       {super.key,
       required this.name,
       required this.image,
-      required this.switcher});
+      required this.switcher, required this.jobPosition});
 
   @override
   State<DrawerColumn> createState() => _DrawerColumnState();
@@ -37,7 +37,7 @@ class _DrawerColumnState extends State<DrawerColumn> {
           style: Theme.of(context).textTheme.displaySmall,
         ),
         Text(
-          'Job Position',
+          widget.jobPosition,
           style: Style.textStyleRegular2(size: 13, textColor: Colors.grey),
         ),
         Text(
