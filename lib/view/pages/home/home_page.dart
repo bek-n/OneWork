@@ -58,9 +58,11 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 60.h,
               width: 60.w,
-              child: Image.asset(
-                'assets/images/1.png',
-              ),
+              child: state.profile?.user?.imageUrl != null
+                  ? Image.network('${state.profile?.user?.imageUrl}')
+                  : Image.asset(
+                      'assets/images/1.png',
+                    ),
             ),
           ],
           title: Column(
