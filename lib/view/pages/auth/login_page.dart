@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:one_work/view/pages/auth/register_page.dart';
+import 'package:one_work/view/pages/home/general_page.dart';
 import 'package:one_work/view/pages/home/home_page.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                         onSuccess: () {
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                  builder: (_) => const HomePage()),
+                                  builder: (_) => const GeneralPage()),
                               (route) => false);
                         });
                   }
