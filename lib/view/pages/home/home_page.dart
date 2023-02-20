@@ -59,7 +59,15 @@ class _HomePageState extends State<HomePage> {
               height: 60.h,
               width: 60.w,
               child: state.profile?.user?.imageUrl != null
-                  ? Image.network('${state.profile?.user?.imageUrl}')
+                  ? Container(
+                      height: 120.h,
+                      width: 120.w,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  '${state.profile?.user?.imageUrl}'))),
+                    )
                   : Image.asset(
                       'assets/images/1.png',
                     ),

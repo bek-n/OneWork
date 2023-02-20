@@ -11,6 +11,7 @@ import '../domen/service/local_store.dart';
 class AuthController extends ChangeNotifier {
   String? wrongPassword;
   bool isLoading = false;
+  bool loadingLogin = false;
   bool isVisibility = true;
   String email1 = '';
   final AuthFacade authRepo = AuthRepo();
@@ -110,16 +111,16 @@ class AuthController extends ChangeNotifier {
     required String password,
     required VoidCallback onSuccess,
   }) async {
-    isLoading = true;
-    notifyListeners();
     final fcmtoken = await FirebaseMessaging.instance.getToken();
+    loadingLogin = true;
+    notifyListeners();
     var res = await authRepo.login(
         email: email, password: password, fcmToken: '$fcmtoken');
     if (res?.statusCode == 200) {
       var login = LoginModel.fromJson(res?.data);
       LocalStore.setAccessToken(login.accessToken ?? "");
       LocalStore.setRefreshToken(login.refreshToken ?? "");
-      isLoading = false;
+      loadingLogin = false;
       notifyListeners();
       onSuccess();
     }

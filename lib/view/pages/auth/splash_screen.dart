@@ -50,6 +50,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              'assets/images/logo1.png',
+              height: 250.h,
+              width: 250.w,
+            ),
             Text('OneWork',
                 style: Style.textStyleRegular(
                     size: 48, textColor: Style.whiteColor)),
